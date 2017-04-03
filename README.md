@@ -1,2 +1,2 @@
-# itonk
-Object-oriented networkcommunication
+# ITONK
+Object-oriented Networkcommunication
