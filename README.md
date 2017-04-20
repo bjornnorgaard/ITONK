@@ -22,7 +22,6 @@ price: int (price in cent, per share)
 quantity: int (number of shares to sell)
 
 ### Buy
-### Buy
 http://broker/buy (POST)
 #### Arguments
 buyerId: int (id of buyer)
@@ -37,7 +36,7 @@ http://registry/checkOwnership (GET)
 tickerSymbol: string
 sellerId: int
 quantity: int
-#### Change Ownership
+### Change Ownership
 http://registry/changeOwnership (POST)
 #### Arguments
 sellerId: int
