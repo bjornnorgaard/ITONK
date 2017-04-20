@@ -46,14 +46,14 @@ quantity: int
 
 ## Taxtobin
 ### Tax
-http://taxtobin/tax
+http://taxtobin/tax (POST)
 #### Arguments
 sellerId: int  
 totalPrice: int  
 
 ## Requester
 ### Request Purchase
-http://requester/buy
+http://requester/buy (POST)
 #### Arguments
 buyerId: int (id of buyer)  
 tickerSymbol: string (unique code for stock)  
@@ -62,7 +62,7 @@ quantity: int (number of shares to sell)
 
 ## Provider
 ### Provide Stock
-http://provider/sell
+http://provider/sell (POST)
 #### Arguments
 sellerId: int (id of seller)  
 tickerSymbol: string (unique code for stock)  
