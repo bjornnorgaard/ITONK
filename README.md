@@ -10,6 +10,14 @@ Proxy: Jakob
 Taxtobin: Martin  
 Registry: David  
 
+| Broker    | Dennis and Jakob |
+|-----------|------------------|
+| Provider  | Bjørn            |
+| Requester | Joachim          |
+| Proxy     | Jakob            |
+| Taxtobin  | Martin           |
+| Registry  | David            |
+
 ## Broker
 ### Sell
 http://broker/sell (POST)
