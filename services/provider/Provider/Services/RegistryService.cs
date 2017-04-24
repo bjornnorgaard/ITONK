@@ -20,10 +20,10 @@ namespace Services
 
         public bool IsValidOwnership(Order order)
         {
-            var request = Client.GetAsync($"?" +
-                                           $"tickerSymbol={order.TickerSymbol}&" +
-                                           $"sellerId={order.SellerId}&" +
-                                           $"quantity={order.Quantity}");
+            var request = Client.GetAsync($"/checkOwnership/" +
+                                          $"tickerSymbol={order.TickerSymbol}&" +
+                                          $"sellerId={order.SellerId}&" +
+                                          $"quantity={order.Quantity}");
             request.Wait();
             var response = request.Result;
 
