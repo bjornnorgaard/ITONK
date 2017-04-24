@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Interfaces;
 using Models;
+using Newtonsoft.Json;
 
 namespace Services
 {
@@ -17,10 +18,17 @@ namespace Services
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-        
+
         public bool CreateSellOrder(Order order)
         {
-            return true;
+            var stringObject = JsonConvert.SerializeObject(order);
+            StringContent stringContent = new StringContent(stringObject);
+
+            var request = Client.PostAsync("/sell", stringContent);
+            request.Wait();
+            var response = request.Result;
+
+            return response.IsSuccessStatusCode;
         }
     }
 }
