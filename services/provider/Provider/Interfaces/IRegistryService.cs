@@ -1,9 +1,10 @@
-﻿using Models;
+﻿using System.Threading.Tasks;
+using Models;
 
 namespace Interfaces
 {
     public interface IRegistryService
     {
-        bool IsValidOwnership(Order order);
+        Task<bool> IsValidOwnershipAsync(Order order);
     }
 }

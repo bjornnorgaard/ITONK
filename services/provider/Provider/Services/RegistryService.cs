@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using Interfaces;
 using Models;
 
@@ -18,16 +19,13 @@ namespace Services
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public bool IsValidOwnership(Order order)
+        public async Task<bool> IsValidOwnershipAsync(Order order)
         {
-            var request = Client.GetAsync($"/checkOwnership/" +
+            var request = await Client.GetAsync($"/checkOwnership/" +
                                           $"tickerSymbol={order.TickerSymbol}&" +
                                           $"sellerId={order.SellerId}&" +
                                           $"quantity={order.Quantity}");
-            request.Wait();
-            var response = request.Result;
-
-            return response.IsSuccessStatusCode;
+            return request.IsSuccessStatusCode;
         }
     }
 }

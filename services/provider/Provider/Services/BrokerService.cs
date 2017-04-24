@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using Interfaces;
 using Models;
 using Newtonsoft.Json;
@@ -19,15 +20,12 @@ namespace Services
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public bool CreateSellOrder(Order order)
+        public async Task<bool> CreateSellOrderAsync(Order order)
         {
             var stringObject = JsonConvert.SerializeObject(order);
             StringContent stringContent = new StringContent(stringObject);
 
-            var request = Client.PostAsync("/sell", stringContent);
-            request.Wait();
-            var response = request.Result;
-
+            var response = await Client.PostAsync("/sell", stringContent);
             return response.IsSuccessStatusCode;
         }
     }
