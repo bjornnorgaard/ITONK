@@ -20,7 +20,14 @@ namespace Services
 
         public bool IsValidOwnership(Order order)
         {
-            return true;
+            var request = Client.GetAsync($"?" +
+                                           $"tickerSymbol={order.TickerSymbol}&" +
+                                           $"sellerId={order.SellerId}&" +
+                                           $"quantity={order.Quantity}");
+            request.Wait();
+            var response = request.Result;
+
+            return response.IsSuccessStatusCode;
         }
     }
 }
