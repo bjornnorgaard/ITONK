@@ -30,6 +30,8 @@ namespace Provider
 
             services.AddTransient<IBrokerService, BrokerService>();
             services.AddTransient<IRegistryService, RegistryService>();
+            services.AddTransient<IBrokerAddressService, BrokerAddressService>();
+            services.AddTransient<IRegistryAddressService, RegistryAddressService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
