@@ -28,10 +28,8 @@ namespace Provider
             // Add framework services.
             services.AddMvc();
 
-            services.AddTransient<IBrokerService, BrokerService>();
-            services.AddTransient<IRegistryService, RegistryService>();
-            services.AddTransient<IBrokerAddressService, BrokerAddressService>();
-            services.AddTransient<IRegistryAddressService, RegistryAddressService>();
+            services.AddTransient<IBrokerService, BrokerService>(_ => new BrokerService(Configuration.GetSection("BrokerApiAddress").Value));
+            services.AddTransient<IRegistryService, RegistryService>(_ => new RegistryService(Configuration.GetSection("RegistryApiAddress").Value));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
