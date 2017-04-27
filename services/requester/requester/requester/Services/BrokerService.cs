@@ -7,25 +7,19 @@ using requester.Models;
 
 namespace requester.Services
 {
-    public class BrokerService
+    public static class BrokerService
     {
-        public BrokerService()
+        public static async Task<HttpResponseMessage> SubmitBuyOrder(BuyOrder buyOrder)
         {
-            _httpClient = new HttpClient {BaseAddress = new Uri(BrokerUrl)};
+            _httpClient = new HttpClient { BaseAddress = new Uri(Resource.broker_url) };
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        }
-        public async Task<bool> SubmitBuyOrder(BuyOrder buyOrder)
-        {
             var srlzd = JsonConvert.SerializeObject(buyOrder);
             var httpOrder = new StringContent(srlzd);
-
             var httpResponse = await _httpClient.PostAsync("/buy", httpOrder);
-            return httpResponse.IsSuccessStatusCode;
+            return httpResponse;
         }
 
-
-        private const string BrokerUrl = "";
-        private readonly HttpClient _httpClient;
+        private static HttpClient _httpClient;
     }
 }
