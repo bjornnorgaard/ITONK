@@ -16,7 +16,8 @@ namespace Services
             if (string.IsNullOrWhiteSpace(registryAddress))
             {
                 throw new ArgumentException($"The argument {nameof(registryAddress)} was null or whitespace. " +
-                                            $"Please fill in the Relevant sections in 'appsettings.json'.");
+                                            $"Please fill in the Relevant sections in 'appsettings.json'. " +
+                                            $"The key should be called something like {nameof(registryAddress)}.");
             }
 
             Client = new HttpClient {BaseAddress = new Uri(registryAddress)};

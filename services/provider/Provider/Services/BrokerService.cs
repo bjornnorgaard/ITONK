@@ -17,7 +17,8 @@ namespace Services
             if (string.IsNullOrWhiteSpace(brokerAddress))
             {
                 throw new ArgumentException($"The argument {nameof(brokerAddress)} was null or whitespace. " +
-                                            $"Please fill in the Relevant sections in 'appsettings.json'.");
+                                            $"Please fill in the Relevant sections in 'appsettings.json'. " +
+                                            $"The key should be called something like {nameof(brokerAddress)}.");
             }
 
             Client = new HttpClient { BaseAddress = new Uri(brokerAddress) };
