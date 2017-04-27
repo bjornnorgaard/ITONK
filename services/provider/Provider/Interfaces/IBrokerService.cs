@@ -1,9 +1,10 @@
+using System.Threading.Tasks;
 using Models;
 
 namespace Interfaces
 {
     public interface IBrokerService
     {
-        bool CreateSellOrder(Order order);
+        Task<bool> CreateSellOrderAsync(Order order);
     }
 }

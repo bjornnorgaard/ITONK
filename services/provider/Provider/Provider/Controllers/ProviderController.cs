@@ -1,4 +1,5 @@
-﻿using Interfaces;
+﻿using System.Threading.Tasks;
+using Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Models;
 
@@ -32,11 +33,11 @@ namespace Provider.Controllers
 
         // POST api/values
         [HttpPost]
-        public string Post([FromBody]Order order)
+        public async Task<string> Post([FromBody]Order order)
         {
-            if (_registryService.IsValidOwnership(order))
+            if (await _registryService.IsValidOwnershipAsync(order))
             {
-                if (_brokerService.CreateSellOrder(order))
+                if (await _brokerService.CreateSellOrderAsync(order))
                 {
                     return "Shit got done!";
                 }
