@@ -1,2 +1,66 @@
-# ITONK
-Project for the course: Object-oriented Networkcommunication
+version: "2"
+
+services:
+
+  proxy:
+    container_name: proxy
+    build: ../services/proxy
+    ports:
+      - "8000:80"
+
+
+  broker:
+    container_name: broker
+    #restart: always
+    build: ../services/broker
+    ports:
+      - "80"
+    environment:
+      MYSQL_HOST: broker-db
+      MYSQL_PORT: 6379
+      MYSQL_DB: brokerdb
+      MYSQL_USER: broker
+      MYSQL_PASSWORD: 1234
+
+  broker-db:
+    container_name: broker-db
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - "../var/broker-db-mysqldata:/var/lib/mysql"
+    environment:
+      MYSQL_DATABASE: brokerdb
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_USER: broker
+      MYSQL_PASSWORD: 1234
+
+
+  provider:
+    container_name: provider
+    #restart: always
+    build: ../services/provider
+    ports:
+      - "80"
+
+  registry:
+    container_name: registry
+    #restart: always
+    build: ../services/registry
+    ports:
+      - "80"
+
+  requester:
+    container_name: requester
+    #restart: always
+    build: ../services/requester
+    ports:
+      - "80"
+
+  taxtobin:
+    container_name: taxtobin
+    #restart: always
+    build: ../services/taxtobin
+    ports:
+      - "80"
