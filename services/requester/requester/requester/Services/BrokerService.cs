@@ -9,6 +9,8 @@ namespace requester.Services
 {
     public static class BrokerService
     {
+        private static HttpClient _httpClient;
+
         public static async Task<HttpResponseMessage> SubmitBuyOrder(BuyOrder buyOrder)
         {
             _httpClient = new HttpClient { BaseAddress = new Uri(Resource.broker_url) };
@@ -19,7 +21,5 @@ namespace requester.Services
             var httpResponse = await _httpClient.PostAsync("/buy", httpOrder);
             return httpResponse;
         }
-
-        private static HttpClient _httpClient;
     }
 }
