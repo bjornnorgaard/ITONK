@@ -37,13 +37,13 @@ namespace Provider.Controllers
         {
             if (await _registryService.IsValidOwnershipAsync(order))
             {
-                if (await _brokerService.CreateSellOrderAsync(order))
-                {
-                    return "Shit got done!";
-                }
-                return "Tried, but Mr. Broker said no.";
+                return "I call your bluff!";
             }
-            return "I call your bluff!";
+            if (await _brokerService.CreateSellOrderAsync(order))
+            {
+                return "Shit got done!";
+            }
+            return "Tried, but Mr. Broker said no.";
         }
 
         // PUT api/values/5
