@@ -12,10 +12,14 @@ namespace Services
     {
         public static HttpClient Client { get; set; }
 
-        public BrokerService(IBrokerAddressService addressService)
+        public BrokerService(string brokerAddress)
         {
-            Client = new HttpClient();
-            Client.BaseAddress = new Uri(addressService.GetBrokerApiAddress());
+            if (string.IsNullOrWhiteSpace(brokerAddress))
+            {
+                throw new ArgumentException($"The argument {nameof(brokerAddress)} was null.");
+            }
+
+            Client = new HttpClient { BaseAddress = new Uri(brokerAddress) };
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
@@ -23,7 +27,7 @@ namespace Services
         public async Task<bool> CreateSellOrderAsync(Order order)
         {
             var stringObject = JsonConvert.SerializeObject(order);
-            StringContent stringContent = new StringContent(stringObject);
+            var stringContent = new StringContent(stringObject);
 
             var response = await Client.PostAsync("/sell", stringContent);
             return response.IsSuccessStatusCode;
