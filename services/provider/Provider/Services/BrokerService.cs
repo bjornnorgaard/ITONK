@@ -12,16 +12,16 @@ namespace Services
     {
         public static HttpClient Client { get; set; }
 
-        public BrokerService(string brokerAddress)
+        public BrokerService(string brokerApiAddress)
         {
-            if (string.IsNullOrWhiteSpace(brokerAddress))
+            if (string.IsNullOrWhiteSpace(brokerApiAddress))
             {
-                throw new ArgumentException($"The argument {nameof(brokerAddress)} was null or whitespace. " +
+                throw new ArgumentException($"The argument {nameof(brokerApiAddress)} was null or whitespace. " +
                                             $"Please fill in the Relevant sections in 'appsettings.json'. " +
-                                            $"The key should be called something like {nameof(brokerAddress)}.");
+                                            $"The key should be called something like {nameof(brokerApiAddress)}.");
             }
 
-            Client = new HttpClient { BaseAddress = new Uri(brokerAddress) };
+            Client = new HttpClient { BaseAddress = new Uri(brokerApiAddress) };
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
