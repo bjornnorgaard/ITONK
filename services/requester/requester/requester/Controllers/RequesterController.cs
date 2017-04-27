@@ -9,13 +9,13 @@ using requester.Models;
 namespace requester.Controllers
 {
     [Route("[Controller]")]
-    public class BuyController : Controller
+    public class RequesterController : Controller
     {
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] BuyOrder buyOrder)
+        public async Task<string> Post([FromBody] BuyOrder buyOrder)
         {
-
+            await 
         }
     }
 }
