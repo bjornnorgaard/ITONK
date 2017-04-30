@@ -1,5 +1,5 @@
 # ITONK
-Project for the course: Object-oriented Networkcommunication
+Project for the course: Object-oriented Networkcommunication.
 
 ## Work delegation
 

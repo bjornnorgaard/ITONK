@@ -1,12 +1,10 @@
-﻿using Interfaces;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Services;
 
-namespace Provider
+namespace requester
 {
     public class Startup
     {
@@ -27,9 +25,6 @@ namespace Provider
         {
             // Add framework services.
             services.AddMvc();
-
-            services.AddTransient<IBrokerService, BrokerService>(_ => new BrokerService(Configuration.GetSection("BrokerApiAddress").Value));
-            services.AddTransient<IRegistryService, RegistryService>(_ => new RegistryService(Configuration.GetSection("RegistryApiAddress").Value));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
