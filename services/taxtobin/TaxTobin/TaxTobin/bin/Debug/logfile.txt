@@ -239,3 +239,126 @@ Nancy.ModelBinding.ModelBindingException: Unable to bind to type: TaxTobin.Model
    ved CallSite.Target(Closure , CallSite , Object )
    ved Nancy.ModelBinding.ModuleExtensions.Bind[TModel](INancyModule module)
    ved TaxTobin.NancyModules.TaxTobinModule.<.ctor>b__1_1(Object x) i C:\Users\martin\Documents\GitHub\ITONK\services\taxtobin\TaxTobin\TaxTobin\NancyModules\TaxTobinModule.cs:linje 39
+2017-05-01 07:53:16,896 [4 ] [] [] [INFO ] - [TaxTobin.ServiceBase] : Starting Tax Tobin service
+2017-05-01 07:53:16,926 [4 ] [] [] [INFO ] - [TaxTobin.ServiceBase] : Logging initialised
+2017-05-01 07:54:25,825 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : Received following request:
+2017-05-01 07:54:25,825 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : ID: 0
+2017-05-01 07:54:25,825 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : TotalPrice_: 0
+2017-05-01 07:54:25,826 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax for seller with id 0
+2017-05-01 07:54:25,826 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Total price of stock was 0
+2017-05-01 07:54:25,827 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Price with tax is 0
+2017-05-01 07:54:25,827 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax is being send to government tax office for the seller with the id 0
+2017-05-01 07:54:25,827 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax information was sent successfully
+2017-05-01 07:54:25,827 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Received HttpStatusCode ok
+2017-05-01 07:54:26,802 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : Received following request:
+2017-05-01 07:54:26,802 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : ID: 0
+2017-05-01 07:54:26,802 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : TotalPrice_: 0
+2017-05-01 07:54:26,803 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax for seller with id 0
+2017-05-01 07:54:26,803 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Total price of stock was 0
+2017-05-01 07:54:26,803 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Price with tax is 0
+2017-05-01 07:54:26,803 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax is being send to government tax office for the seller with the id 0
+2017-05-01 07:54:26,803 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax information was sent successfully
+2017-05-01 07:54:26,803 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Received HttpStatusCode ok
+2017-05-01 07:54:27,358 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : Received following request:
+2017-05-01 07:54:27,358 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : ID: 0
+2017-05-01 07:54:27,358 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : TotalPrice_: 0
+2017-05-01 07:54:27,359 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax for seller with id 0
+2017-05-01 07:54:27,359 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Total price of stock was 0
+2017-05-01 07:54:27,359 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Price with tax is 0
+2017-05-01 07:54:27,359 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax is being send to government tax office for the seller with the id 0
+2017-05-01 07:54:27,359 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax information was sent successfully
+2017-05-01 07:54:27,360 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Received HttpStatusCode ok
+2017-05-01 07:54:27,694 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : Received following request:
+2017-05-01 07:54:27,694 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : ID: 0
+2017-05-01 07:54:27,695 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : TotalPrice_: 0
+2017-05-01 07:54:27,695 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax for seller with id 0
+2017-05-01 07:54:27,695 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Total price of stock was 0
+2017-05-01 07:54:27,695 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Price with tax is 0
+2017-05-01 07:54:27,695 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax is being send to government tax office for the seller with the id 0
+2017-05-01 07:54:27,695 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax information was sent successfully
+2017-05-01 07:54:27,695 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Received HttpStatusCode ok
+2017-05-01 07:54:27,975 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : Received following request:
+2017-05-01 07:54:27,975 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : ID: 0
+2017-05-01 07:54:27,975 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : TotalPrice_: 0
+2017-05-01 07:54:27,975 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax for seller with id 0
+2017-05-01 07:54:27,975 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Total price of stock was 0
+2017-05-01 07:54:27,975 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Price with tax is 0
+2017-05-01 07:54:27,976 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax is being send to government tax office for the seller with the id 0
+2017-05-01 07:54:27,976 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax information was sent successfully
+2017-05-01 07:54:27,976 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Received HttpStatusCode ok
+2017-05-01 07:55:03,365 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : Received following request:
+2017-05-01 07:55:03,366 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : ID: 1423
+2017-05-01 07:55:03,366 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : TotalPrice_: 5121423,232
+2017-05-01 07:55:03,366 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax for seller with id 1423
+2017-05-01 07:55:03,366 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Total price of stock was 5121423,232
+2017-05-01 07:55:03,366 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Price with tax is 5223851,69664
+2017-05-01 07:55:03,366 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax is being send to government tax office for the seller with the id 1423
+2017-05-01 07:55:03,367 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax information was sent successfully
+2017-05-01 07:55:03,367 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Received HttpStatusCode ok
+2017-05-01 07:55:04,548 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : Received following request:
+2017-05-01 07:55:04,548 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : ID: 1423
+2017-05-01 07:55:04,548 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : TotalPrice_: 5121423,232
+2017-05-01 07:55:04,549 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax for seller with id 1423
+2017-05-01 07:55:04,549 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Total price of stock was 5121423,232
+2017-05-01 07:55:04,549 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Price with tax is 5223851,69664
+2017-05-01 07:55:04,549 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax is being send to government tax office for the seller with the id 1423
+2017-05-01 07:55:04,550 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax information was sent successfully
+2017-05-01 07:55:04,550 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Received HttpStatusCode ok
+2017-05-01 07:55:04,934 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : Received following request:
+2017-05-01 07:55:04,934 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : ID: 1423
+2017-05-01 07:55:04,934 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : TotalPrice_: 5121423,232
+2017-05-01 07:55:04,935 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax for seller with id 1423
+2017-05-01 07:55:04,935 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Total price of stock was 5121423,232
+2017-05-01 07:55:04,935 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Price with tax is 5223851,69664
+2017-05-01 07:55:04,935 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax is being send to government tax office for the seller with the id 1423
+2017-05-01 07:55:04,935 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax information was sent successfully
+2017-05-01 07:55:04,935 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Received HttpStatusCode ok
+2017-05-01 07:55:05,125 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : Received following request:
+2017-05-01 07:55:05,126 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : ID: 1423
+2017-05-01 07:55:05,126 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : TotalPrice_: 5121423,232
+2017-05-01 07:55:05,126 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax for seller with id 1423
+2017-05-01 07:55:05,126 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Total price of stock was 5121423,232
+2017-05-01 07:55:05,126 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Price with tax is 5223851,69664
+2017-05-01 07:55:05,127 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax is being send to government tax office for the seller with the id 1423
+2017-05-01 07:55:05,127 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax information was sent successfully
+2017-05-01 07:55:05,127 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Received HttpStatusCode ok
+2017-05-01 07:55:05,393 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : Received following request:
+2017-05-01 07:55:05,393 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : ID: 1423
+2017-05-01 07:55:05,394 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : TotalPrice_: 5121423,232
+2017-05-01 07:55:05,394 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax for seller with id 1423
+2017-05-01 07:55:05,394 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Total price of stock was 5121423,232
+2017-05-01 07:55:05,394 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Price with tax is 5223851,69664
+2017-05-01 07:55:05,394 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax is being send to government tax office for the seller with the id 1423
+2017-05-01 07:55:05,394 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax information was sent successfully
+2017-05-01 07:55:05,395 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Received HttpStatusCode ok
+2017-05-01 07:55:05,572 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : Received following request:
+2017-05-01 07:55:05,572 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : ID: 1423
+2017-05-01 07:55:05,573 [6 ] [] [] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : TotalPrice_: 5121423,232
+2017-05-01 07:55:05,573 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax for seller with id 1423
+2017-05-01 07:55:05,573 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Total price of stock was 5121423,232
+2017-05-01 07:55:05,573 [6 ] [] [] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Price with tax is 5223851,69664
+2017-05-01 07:55:05,573 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax is being send to government tax office for the seller with the id 1423
+2017-05-01 07:55:05,573 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax information was sent successfully
+2017-05-01 07:55:05,574 [6 ] [] [] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Received HttpStatusCode ok
+2017-05-01 08:01:35,140 [4 ] [] [INFO ] - [TaxTobin.ServiceBase] : Starting Tax Tobin service
+2017-05-01 08:01:35,156 [4 ] [] [INFO ] - [TaxTobin.ServiceBase] : Logging initialised
+2017-05-01 08:01:40,046 [6 ] [1423] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : Received following request:
+2017-05-01 08:01:40,047 [6 ] [1423] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : ID: 1423
+2017-05-01 08:01:40,047 [6 ] [1423] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : TotalPrice_: 5121423,232
+2017-05-01 08:01:40,048 [6 ] [1423] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax for seller with id 1423
+2017-05-01 08:01:40,048 [6 ] [1423] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Total price of stock was 5121423,232
+2017-05-01 08:01:40,048 [6 ] [1423] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax using the current tax percentage 0,02
+2017-05-01 08:01:40,048 [6 ] [1423] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Price with added tax is 5223851,69664
+2017-05-01 08:01:40,048 [6 ] [1423] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax is being send to government tax office for the seller with the id 1423
+2017-05-01 08:01:40,049 [6 ] [1423] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax information was sent successfully
+2017-05-01 08:01:40,049 [6 ] [1423] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Received HttpStatusCode ok
+2017-05-01 08:01:40,870 [6 ] [1423] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : Received following request:
+2017-05-01 08:01:40,870 [6 ] [1423] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : ID: 1423
+2017-05-01 08:01:40,870 [6 ] [1423] [INFO ] - [TaxTobin.NancyModules.TaxTobinModule] : TotalPrice_: 5121423,232
+2017-05-01 08:01:40,870 [6 ] [1423] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax for seller with id 1423
+2017-05-01 08:01:40,870 [6 ] [1423] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Total price of stock was 5121423,232
+2017-05-01 08:01:40,870 [6 ] [1423] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Calculating tax using the current tax percentage 0,02
+2017-05-01 08:01:40,871 [6 ] [1423] [INFO ] - [TaxTobin.TaxCalculations.TaxCalculator] : Price with added tax is 5223851,69664
+2017-05-01 08:01:40,871 [6 ] [1423] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax is being send to government tax office for the seller with the id 1423
+2017-05-01 08:01:40,871 [6 ] [1423] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Tax information was sent successfully
+2017-05-01 08:01:40,871 [6 ] [1423] [INFO ] - [TaxTobin.DataLink.ExternalTaxSystemComm] : Received HttpStatusCode ok

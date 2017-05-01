@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataLink\ExternalTaxSystemComm.cs" />
     <Compile Include="Models\SaleInfo.cs" />
     <Compile Include="NancyModules\TaxTobinModule.cs" />
     <Compile Include="Program.cs" />
