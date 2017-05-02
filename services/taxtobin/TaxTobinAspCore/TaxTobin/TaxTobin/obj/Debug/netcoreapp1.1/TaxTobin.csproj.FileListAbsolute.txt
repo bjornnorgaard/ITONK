@@ -1,0 +1,9 @@
+C:\Users\martin\Documents\GitHub\ITONK\services\taxtobin\TaxTobinAspCore\TaxTobin\TaxTobin\bin\Debug\netcoreapp1.1\TaxTobin.deps.json
+C:\Users\martin\Documents\GitHub\ITONK\services\taxtobin\TaxTobinAspCore\TaxTobin\TaxTobin\bin\Debug\netcoreapp1.1\TaxTobin.runtimeconfig.json
+C:\Users\martin\Documents\GitHub\ITONK\services\taxtobin\TaxTobinAspCore\TaxTobin\TaxTobin\bin\Debug\netcoreapp1.1\TaxTobin.runtimeconfig.dev.json
+C:\Users\martin\Documents\GitHub\ITONK\services\taxtobin\TaxTobinAspCore\TaxTobin\TaxTobin\bin\Debug\netcoreapp1.1\TaxTobin.dll
+C:\Users\martin\Documents\GitHub\ITONK\services\taxtobin\TaxTobinAspCore\TaxTobin\TaxTobin\bin\Debug\netcoreapp1.1\TaxTobin.pdb
+C:\Users\martin\Documents\GitHub\ITONK\services\taxtobin\TaxTobinAspCore\TaxTobin\TaxTobin\obj\Debug\netcoreapp1.1\TaxTobin.csprojResolveAssemblyReference.cache
+C:\Users\martin\Documents\GitHub\ITONK\services\taxtobin\TaxTobinAspCore\TaxTobin\TaxTobin\obj\Debug\netcoreapp1.1\TaxTobin.AssemblyInfo.cs
+C:\Users\martin\Documents\GitHub\ITONK\services\taxtobin\TaxTobinAspCore\TaxTobin\TaxTobin\obj\Debug\netcoreapp1.1\TaxTobin.dll
+C:\Users\martin\Documents\GitHub\ITONK\services\taxtobin\TaxTobinAspCore\TaxTobin\TaxTobin\obj\Debug\netcoreapp1.1\TaxTobin.pdb
