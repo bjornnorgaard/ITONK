@@ -26,11 +26,7 @@ namespace Registry.Migrations
                 sharesList.Add(new ShareModel { TickerSymbol = "DENERG", Owner = 6 });
             }
 
-            foreach (var share in sharesList)
-            {
-                context.Shares.Add(share);
-            }
-
+            context.Shares.AddRange(sharesList);
             context.SaveChanges();
         }
     }
