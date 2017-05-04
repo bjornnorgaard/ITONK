@@ -28,7 +28,8 @@ namespace Provider
             // Add framework services.
             services.AddMvc();
 
-            services.AddTransient<IBrokerService, BrokerService>(_ => new BrokerService(Configuration.GetSection("BrokerApiAddress").Value));
+            //services.AddTransient<IBrokerService, BrokerService>(_ => new BrokerService(Configuration.GetSection("BrokerApiAddress").Value));
+            services.AddTransient<IBrokerService, MockBrokerService>(_ => new MockBrokerService(Configuration.GetSection("BrokerApiAddress").Value));
             services.AddTransient<IRegistryService, RegistryService>(_ => new RegistryService(Configuration.GetSection("RegistryApiAddress").Value));
         }
 
