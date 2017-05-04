@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Registry.Models;
 
@@ -13,34 +14,19 @@ namespace Registry.Migrations
             {
                 return; // Database already seeded
             }
+            List<ShareModel> sharesList = new List<ShareModel>();
 
-            var shares = new[]
+            for (int i = 0; i < 20; i++)
             {
-                new Share{TickerSymbol = "BAWS", Owner = 1},
-                new Share{TickerSymbol = "BAWS", Owner = 1},
-                new Share{TickerSymbol = "BAWS", Owner = 1},
-                new Share{TickerSymbol = "BAWS", Owner = 1},
-                new Share{TickerSymbol = "BAWS", Owner = 1},
-                new Share{TickerSymbol = "BAWS", Owner = 1},
-                new Share{TickerSymbol = "BAWS", Owner = 1},
-                new Share{TickerSymbol = "BAWS", Owner = 1},
-                new Share{TickerSymbol = "BAWS", Owner = 1},
-                new Share{TickerSymbol = "BAWS", Owner = 1},
-                new Share{TickerSymbol = "BAWS", Owner = 1},
-                new Share{TickerSymbol = "OCCD", Owner = 2},
-                new Share{TickerSymbol = "OCCD", Owner = 2},
-                new Share{TickerSymbol = "OCCD", Owner = 2},
-                new Share{TickerSymbol = "OCCD", Owner = 2},
-                new Share{TickerSymbol = "OCCD", Owner = 2},
-                new Share{TickerSymbol = "OCCD", Owner = 2},
-                new Share{TickerSymbol = "OCCD", Owner = 2},
-                new Share{TickerSymbol = "OCCD", Owner = 2},
-                new Share{TickerSymbol = "OCCD", Owner = 2},
-                new Share{TickerSymbol = "OCCD", Owner = 2},
-                new Share{TickerSymbol = "OCCD", Owner = 2},
-            };
+                sharesList.Add(new ShareModel { TickerSymbol = "NVO", Owner = 1 });
+                sharesList.Add(new ShareModel { TickerSymbol = "GOOG", Owner = 2 });
+                sharesList.Add(new ShareModel { TickerSymbol = "VWS", Owner = 3 });
+                sharesList.Add(new ShareModel { TickerSymbol = "DANSKE", Owner = 4 });
+                sharesList.Add(new ShareModel { TickerSymbol = "MAERSK A", Owner = 5 });
+                sharesList.Add(new ShareModel { TickerSymbol = "DENERG", Owner = 6 });
+            }
 
-            foreach (var share in shares)
+            foreach (var share in sharesList)
             {
                 context.Shares.Add(share);
             }

@@ -21,6 +21,6 @@ namespace Registry.Models
             }
         }
 
-        public DbSet<Share> Shares { get; set; }
+        public DbSet<ShareModel> Shares { get; set; }
     }
 }

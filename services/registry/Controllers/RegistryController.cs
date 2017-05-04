@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using Registry.Models;
+using Registry.Models.ViewModel;
 
 namespace Registry.Controllers
 {
@@ -32,9 +32,30 @@ namespace Registry.Controllers
         }
 
         [HttpPost]
-        public void ChangeOwnership([FromBody] JObject jsonbody)
+        public IActionResult ChangeOwnership([FromBody] BuyModel buyModel)
         {
+            if (buyModel.BuyerId == 0 || buyModel.Quantity == 0 || buyModel.SellerId == 0 || string.IsNullOrWhiteSpace(buyModel.TickerSymbol))
+            {
+                Response.StatusCode = 400;
+                return Json(new { errorMessage = "Insufficient parameters given" });
+            }
 
+            var shares = _context.Shares.Where(share => share.Owner == buyModel.SellerId && share.TickerSymbol == buyModel.TickerSymbol);
+
+            if (shares.Count() < buyModel.Quantity)
+                return Json(new { errorMessage = "Insufficient shares owned" });
+
+            var sharesToBeSold = shares.Take(buyModel.Quantity);
+
+            foreach (var share in sharesToBeSold)
+            {
+                share.Owner = buyModel.BuyerId;
+            }
+
+            _context.Shares.UpdateRange(sharesToBeSold);
+            _context.SaveChanges();
+
+            return Json(new { Message = "Shares sold" });
         }
     }
 }
