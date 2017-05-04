@@ -17,7 +17,6 @@ namespace Provider.Controllers
             _brokerService = brokerService;
         }
 
-        // POST [controller]/[action]
         [HttpPost]
         public async Task<IActionResult> Sell([FromBody]Order order)
         {
