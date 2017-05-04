@@ -15,18 +15,13 @@ namespace Registry.Migrations
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Registry.Models.Share", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Owner");
-
-                    b.Property<string>("TickerSymbol");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Shares");
-                });
+            {
+                b.Property<int>("Id").ValueGeneratedOnAdd();
+                b.Property<int>("Owner");
+                b.Property<string>("TickerSymbol");
+                b.HasKey("Id");
+                b.ToTable("Shares");
+            });
         }
     }
 }

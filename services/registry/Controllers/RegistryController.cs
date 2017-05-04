@@ -8,28 +8,31 @@ namespace Registry.Controllers
     [Route("[controller]/[action]")]
     public class RegistryController : Controller
     {
-        private readonly ShareContext context;
+        private readonly ShareContext _context;
 
         public RegistryController(ShareContext shareContext)
         {
-            this.context = shareContext;
+            _context = shareContext;
         }
 
         [HttpGet]
-        public IActionResult checkOwnership(string tickerSymbol, int sellerId, int quantity)
+        public IActionResult CheckOwnership(string tickerSymbol, int sellerId, int quantity)
         {
             if (string.IsNullOrWhiteSpace(tickerSymbol) || sellerId == 0 || quantity == 0)
             {
                 Response.StatusCode = 400;
                 return Json(new { errorMessage = "Insufficient parameters given" });
             }
-            var shares = context.Shares.Where(share => share.Owner == sellerId && share.TickerSymbol == tickerSymbol);
+
+            var shares = _context.Shares
+                .Where(s => s.Owner == sellerId)
+                .Where(s => s.TickerSymbol == tickerSymbol);
 
             return Json(shares.Count() >= quantity ? new { Owner = "True" } : new { Owner = "False" });
         }
 
         [HttpPost]
-        public void changeOwnership([FromBody] JObject jsonbody)
+        public void ChangeOwnership([FromBody] JObject jsonbody)
         {
 
         }
