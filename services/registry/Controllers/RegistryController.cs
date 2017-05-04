@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Registry.Models;
 
@@ -18,6 +14,7 @@ namespace Registry.Controllers
         {
             this.context = shareContext;
         }
+
         [HttpGet]
         public IActionResult checkOwnership(string tickerSymbol, int sellerId, int quantity)
         {
