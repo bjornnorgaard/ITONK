@@ -11,11 +11,11 @@ namespace Registry.Controllers
     [Route("[controller]/[action]")]
     public class RegistryController : Controller
     {
-        private readonly ShareContext context;
+        private readonly ShareContext _context;
 
         public RegistryController(ShareContext shareContext)
         {
-            this.context = shareContext;
+            _context = shareContext;
         }
 
         [HttpGet]
@@ -26,7 +26,10 @@ namespace Registry.Controllers
                 Response.StatusCode = 400;
                 return Json(new { errorMessage = "Insufficient parameters given" });
             }
-            var shares = context.Shares.Where(share => share.Owner == sellerId && share.TickerSymbol == tickerSymbol);
+
+            var shares = _context.Shares
+                .Where(s => s.Owner == sellerId)
+                .Where(s => s.TickerSymbol == tickerSymbol);
 
             return Json(shares.Count() >= quantity ? new { Owner = "True" } : new { Owner = "False" });
         }
@@ -41,8 +44,8 @@ namespace Registry.Controllers
                 Response.StatusCode = 400;
                 return Json(new { errorMessage = "Insufficient parameters given" });
             }
-            
-            var shares = context.Shares.Where(share => share.Owner == shareViewModel.SellerId && share.TickerSymbol == shareViewModel.TickerSymbol);
+
+            var shares = _context.Shares.Where(share => share.Owner == shareViewModel.SellerId && share.TickerSymbol == shareViewModel.TickerSymbol);
 
             if (shares.Count() < shareViewModel.Quantity)
                 return Json(new { errorMessage = "Insufficient shares owned" });
@@ -54,8 +57,8 @@ namespace Registry.Controllers
                 share.Owner = shareViewModel.BuyerId;
             }
 
-            context.Shares.UpdateRange(sharesToBeSold);
-            context.SaveChanges();
+            _context.Shares.UpdateRange(sharesToBeSold);
+            _context.SaveChanges();
 
             return Json(new { Message = "Shares sold" });
         }
