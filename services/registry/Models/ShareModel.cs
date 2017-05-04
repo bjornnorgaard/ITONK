@@ -1,6 +1,6 @@
 ﻿namespace Registry.Models
 {
-    public class Share
+    public class ShareModel
     {
         public int Id { get; set; }
         public string TickerSymbol { get; set; }

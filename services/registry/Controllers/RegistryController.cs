@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using Registry.Models;
 using Registry.Models.ViewModel;
 
@@ -35,26 +32,24 @@ namespace Registry.Controllers
         }
 
         [HttpPost]
-        public IActionResult ChangeOwnership([FromBody] JObject jsonbody)
+        public IActionResult ChangeOwnership([FromBody] BuyModel buyModel)
         {
-            BuyViewModel shareViewModel = jsonbody.ToObject<BuyViewModel>();
-
-            if (shareViewModel.BuyerId == 0 || shareViewModel.Quantity == 0 || shareViewModel.SellerId == 0 || string.IsNullOrWhiteSpace(shareViewModel.TickerSymbol))
+            if (buyModel.BuyerId == 0 || buyModel.Quantity == 0 || buyModel.SellerId == 0 || string.IsNullOrWhiteSpace(buyModel.TickerSymbol))
             {
                 Response.StatusCode = 400;
                 return Json(new { errorMessage = "Insufficient parameters given" });
             }
 
-            var shares = _context.Shares.Where(share => share.Owner == shareViewModel.SellerId && share.TickerSymbol == shareViewModel.TickerSymbol);
+            var shares = _context.Shares.Where(share => share.Owner == buyModel.SellerId && share.TickerSymbol == buyModel.TickerSymbol);
 
-            if (shares.Count() < shareViewModel.Quantity)
+            if (shares.Count() < buyModel.Quantity)
                 return Json(new { errorMessage = "Insufficient shares owned" });
 
-            var sharesToBeSold = shares.Take(shareViewModel.Quantity);
+            var sharesToBeSold = shares.Take(buyModel.Quantity);
 
             foreach (var share in sharesToBeSold)
             {
-                share.Owner = shareViewModel.BuyerId;
+                share.Owner = buyModel.BuyerId;
             }
 
             _context.Shares.UpdateRange(sharesToBeSold);

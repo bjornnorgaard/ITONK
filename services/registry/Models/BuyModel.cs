@@ -1,6 +1,6 @@
 ﻿namespace Registry.Models.ViewModel
 {
-    public class BuyViewModel
+    public class BuyModel
     {
         public int SellerId { get; set; }
         public int Quantity { get; set; }
