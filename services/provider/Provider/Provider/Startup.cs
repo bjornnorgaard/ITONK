@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Services;
+using Services.Mocks;
 
 namespace Provider
 {
@@ -28,7 +29,7 @@ namespace Provider
             // Add framework services.
             services.AddMvc();
 
-            services.AddTransient<IBrokerService, BrokerService>(_ => new BrokerService(Configuration.GetSection("BrokerApiAddress").Value));
+            services.AddTransient<IBrokerService, MockBrokerService>(_ => new MockBrokerService(Configuration.GetSection("BrokerApiAddress").Value));
             services.AddTransient<IRegistryService, RegistryService>(_ => new RegistryService(Configuration.GetSection("RegistryApiAddress").Value));
         }
 

@@ -6,7 +6,7 @@ using Interfaces;
 using Models;
 using Newtonsoft.Json;
 
-namespace Services
+namespace Services.Services
 {
     public class BrokerService : IBrokerService
     {

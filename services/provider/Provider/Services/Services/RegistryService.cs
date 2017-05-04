@@ -4,6 +4,8 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Interfaces;
 using Models;
+using Newtonsoft.Json;
+using Services.Dto;
 
 namespace Services
 {
@@ -20,18 +22,27 @@ namespace Services
                                             $"The key should be called something like {nameof(registryApiAddress)}.");
             }
 
-            Client = new HttpClient {BaseAddress = new Uri(registryApiAddress)};
+            Client = new HttpClient { BaseAddress = new Uri(registryApiAddress) };
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public async Task<bool> IsValidOwnershipAsync(Order order)
         {
-            var request = await Client.GetAsync($"/checkOwnership/" +
-                                          $"tickerSymbol={order.TickerSymbol}&" +
-                                          $"sellerId={order.SellerId}&" +
-                                          $"quantity={order.Quantity}");
-            return request.IsSuccessStatusCode;
+            var request = await Client.GetAsync($"Registry/CheckOwnership?" +
+                                                $"tickerSymbol={order.TickerSymbol}&" +
+                                                $"sellerId={order.SellerId}&" +
+                                                $"quantity={order.Quantity}");
+
+            var content = await request.Content.ReadAsStringAsync();
+            var response = JsonConvert.DeserializeObject<RegistryResponseDto>(content);
+
+            if (response.Owner.ToLower().Contains("t"))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
