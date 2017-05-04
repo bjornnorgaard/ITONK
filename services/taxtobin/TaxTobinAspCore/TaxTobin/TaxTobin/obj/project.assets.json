@@ -11015,15 +11015,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\marti\\.nuget\\packages\\": {}
+    "C:\\Users\\martin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\ITONK\\services\\taxtobin\\TaxTobinAspCore\\TaxTobin\\TaxTobin\\TaxTobin.csproj",
+      "projectUniqueName": "C:\\Users\\martin\\Documents\\GitHub\\ITONK\\services\\taxtobin\\TaxTobinAspCore\\TaxTobin\\TaxTobin\\TaxTobin.csproj",
       "projectName": "TaxTobin",
-      "projectPath": "D:\\Projects\\ITONK\\services\\taxtobin\\TaxTobinAspCore\\TaxTobin\\TaxTobin\\TaxTobin.csproj",
-      "outputPath": "D:\\Projects\\ITONK\\services\\taxtobin\\TaxTobinAspCore\\TaxTobin\\TaxTobin\\obj\\",
+      "projectPath": "C:\\Users\\martin\\Documents\\GitHub\\ITONK\\services\\taxtobin\\TaxTobinAspCore\\TaxTobin\\TaxTobin\\TaxTobin.csproj",
+      "outputPath": "C:\\Users\\martin\\Documents\\GitHub\\ITONK\\services\\taxtobin\\TaxTobinAspCore\\TaxTobin\\TaxTobin\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
