@@ -4,6 +4,8 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Interfaces;
 using Models;
+using Newtonsoft.Json;
+using Services.Dto;
 
 namespace Services
 {
@@ -32,7 +34,15 @@ namespace Services
                                                 $"sellerId={order.SellerId}&" +
                                                 $"quantity={order.Quantity}");
 
-            return request.IsSuccessStatusCode;
+            var content = await request.Content.ReadAsStringAsync();
+            var response = JsonConvert.DeserializeObject<RegistryResponseDto>(content);
+
+            if (response.Owner.ToLower().Contains("t"))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
