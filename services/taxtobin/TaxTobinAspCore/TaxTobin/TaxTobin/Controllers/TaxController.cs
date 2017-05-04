@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using TaxTobin.Models;
-using Newtonsoft.Json;
 using Microsoft.Extensions.Logging;
 using TaxTobin.ExternalTaxComms;
 using TaxTobin.TaxCalculations;
@@ -12,13 +8,13 @@ using TaxTobin.TaxCalculations;
 namespace TaxTobin.Controllers
 {
     [Route("[controller]")]
-    public class taxController : Controller
+    public class TaxController : Controller
     {
-        ILogger<taxController> logger;
+        ILogger<TaxController> logger;
         private ITaxCalculator taxCalculator;
         private IExternalTaxComms externalTaxComms;
 
-        public taxController(ILogger<taxController> logger, ITaxCalculator taxCalculator, IExternalTaxComms externalTaxComms)
+        public TaxController(ILogger<TaxController> logger, ITaxCalculator taxCalculator, IExternalTaxComms externalTaxComms)
         {
             this.logger = logger;
             this.taxCalculator = taxCalculator;
@@ -52,7 +48,6 @@ namespace TaxTobin.Controllers
             double taxedPrice = taxCalculator.NewTaxValue(saleInfo);
 
             externalTaxComms.SendToExternalTaxSystems(saleInfo, taxedPrice);
-
         }
     }
 }
