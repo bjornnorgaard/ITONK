@@ -48,10 +48,11 @@ quantity: int
 ### Tax
 http://taxtobin/tax (POST)
 #### Argument
-{
-	"sellerId" : 1234, // Id på sælgeren
-	"totalPrice" : 1042321232.4232 // prisen på aktien
-}
+
+{  
+	"sellerId" : 1234, // Id på sælgeren  
+	"totalPrice" : 1042321232.4232 // prisen på aktien  
+}  
 
 ## Requester
 ### Request Purchase
