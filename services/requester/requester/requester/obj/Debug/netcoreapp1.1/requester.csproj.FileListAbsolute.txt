@@ -1,0 +1,11 @@
+C:\Users\Joachim\Documents\GitRepos\ITONK\services\requester\requester\requester\bin\Debug\netcoreapp1.1\requester.deps.json
+C:\Users\Joachim\Documents\GitRepos\ITONK\services\requester\requester\requester\bin\Debug\netcoreapp1.1\requester.runtimeconfig.json
+C:\Users\Joachim\Documents\GitRepos\ITONK\services\requester\requester\requester\bin\Debug\netcoreapp1.1\requester.runtimeconfig.dev.json
+C:\Users\Joachim\Documents\GitRepos\ITONK\services\requester\requester\requester\bin\Debug\netcoreapp1.1\requester.dll
+C:\Users\Joachim\Documents\GitRepos\ITONK\services\requester\requester\requester\bin\Debug\netcoreapp1.1\requester.pdb
+C:\Users\Joachim\Documents\GitRepos\ITONK\services\requester\requester\requester\obj\Debug\netcoreapp1.1\requester.csprojResolveAssemblyReference.cache
+C:\Users\Joachim\Documents\GitRepos\ITONK\services\requester\requester\requester\obj\Debug\netcoreapp1.1\requester.AssemblyInfo.cs
+C:\Users\Joachim\Documents\GitRepos\ITONK\services\requester\requester\requester\obj\Debug\netcoreapp1.1\requester.dll
+C:\Users\Joachim\Documents\GitRepos\ITONK\services\requester\requester\requester\obj\Debug\netcoreapp1.1\requester.pdb
+C:\Users\Joachim\Documents\GitRepos\ITONK\services\requester\requester\requester\obj\Debug\netcoreapp1.1\requester.Resource.resources
+C:\Users\Joachim\Documents\GitRepos\ITONK\services\requester\requester\requester\obj\Debug\netcoreapp1.1\requester.csproj.GenerateResource.Cache

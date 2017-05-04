@@ -11,10 +11,16 @@ namespace Services
     {
         public static HttpClient Client { get; set; }
 
-        public RegistryService(IRegistryAddressService addressService)
+        public RegistryService(string registryApiAddress)
         {
-            Client = new HttpClient();
-            Client.BaseAddress = new Uri(addressService.GetRegistryApiAddress());
+            if (string.IsNullOrWhiteSpace(registryApiAddress))
+            {
+                throw new ArgumentException($"The argument {nameof(registryApiAddress)} was null or whitespace. " +
+                                            $"Please fill in the relevant sections in 'appsettings.json'. " +
+                                            $"The key should be called something like {nameof(registryApiAddress)}.");
+            }
+
+            Client = new HttpClient {BaseAddress = new Uri(registryApiAddress)};
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
