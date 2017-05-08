@@ -1,10 +1,10 @@
-﻿using DataAccess;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using BrokerContext = Broker.Models.BrokerContext;
 
 namespace Broker
 {
@@ -20,7 +20,7 @@ namespace Broker
             Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public static IConfigurationRoot Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -28,8 +28,7 @@ namespace Broker
             // Add framework services.
             services.AddMvc();
 
-            const string connection = @"Server=(localdb)\mssqllocaldb;Database=BrokerDb;Trusted_Connection=True;";
-            services.AddDbContext<BrokerContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<BrokerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BrokerConnectionString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

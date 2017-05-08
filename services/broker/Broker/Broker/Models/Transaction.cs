@@ -1,4 +1,4 @@
-namespace DataAccess
+﻿namespace Broker.Models
 {
     public class Transaction
     {
