@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Broker
+namespace Services
 {
     public class Class1
     {
