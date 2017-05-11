@@ -6,15 +6,9 @@ namespace Broker.Models
 {
     public class BrokerContext : DbContext
     {
-        public BrokerContext()
-        {
+        public BrokerContext() { }
 
-        }
-
-        public BrokerContext(DbContextOptions options) : base(options)
-        {
-
-        }
+        public BrokerContext(DbContextOptions options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
