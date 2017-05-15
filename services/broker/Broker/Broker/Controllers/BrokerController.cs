@@ -45,12 +45,12 @@ namespace Broker.Controllers
                 Response.StatusCode = 200;
                 return Json(new { status = "No match found. Will be sold later." });
             }
-            if (await _registryService.ChangeOwnership(new OwnershipModel()) == false)
+            if (await _registryService.ChangeOwnership(new ChangeOwnershipObject()) == false)
             {
                 Response.StatusCode = 200;
                 return Json(new { status = "Could not change ownership." });
             }
-            if (await _taxService.InformTaxGuy(new SaleInfo()) == false)
+            if (await _taxService.InformTaxGuy(new TaxNotifyObject()) == false)
             {
                 Response.StatusCode = 200;
                 return Json(new { status = "Tax was not applied." });

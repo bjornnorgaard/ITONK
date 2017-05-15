@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    public class SaleInfo
+    public class TaxNotifyObject
     {
         public int SellerId { get; set; }
         public double TotalPrice { get; set; }
