@@ -1,4 +1,4 @@
-﻿namespace Broker.Models
+﻿namespace Broker.DbModels
 {
     public class Transaction
     {

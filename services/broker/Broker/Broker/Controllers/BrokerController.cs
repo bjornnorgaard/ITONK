@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Broker.Models;
+using Broker.DbModels;
 using Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Models;

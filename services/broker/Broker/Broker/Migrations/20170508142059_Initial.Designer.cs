@@ -1,9 +1,9 @@
 ﻿using System;
+using Broker.DbModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Broker.Models;
 
 namespace Broker.Migrations
 {
@@ -31,7 +31,7 @@ namespace Broker.Migrations
                     b.ToTable("Transactions");
                 });
 
-            modelBuilder.Entity("Models.BuyOrder", b =>
+            modelBuilder.Entity("Models.BuyRecord", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -46,10 +46,10 @@ namespace Broker.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BuyOrders");
+                    b.ToTable("BuyRecords");
                 });
 
-            modelBuilder.Entity("Models.SellOrder", b =>
+            modelBuilder.Entity("Models.SellRecord", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -64,7 +64,7 @@ namespace Broker.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SellOrders");
+                    b.ToTable("SellRecords");
                 });
         }
     }

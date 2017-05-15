@@ -22,7 +22,7 @@ namespace Broker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BuyOrders",
+                name: "BuyRecords",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -38,7 +38,7 @@ namespace Broker.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SellOrders",
+                name: "SellRecords",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -60,10 +60,10 @@ namespace Broker.Migrations
                 name: "Transactions");
 
             migrationBuilder.DropTable(
-                name: "BuyOrders");
+                name: "BuyRecords");
 
             migrationBuilder.DropTable(
-                name: "SellOrders");
+                name: "SellRecords");
         }
     }
 }
