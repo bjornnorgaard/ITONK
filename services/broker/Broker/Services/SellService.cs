@@ -8,6 +8,13 @@ namespace Services
 {
     public class SellService
     {
+
+        public SellService()
+        {
+            
+        }
+
+
         public async Task<string> Sell(SellOrder order)
         {       
             throw new NotImplementedException();

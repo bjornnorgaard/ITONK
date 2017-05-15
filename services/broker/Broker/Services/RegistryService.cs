@@ -2,7 +2,9 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Broker.Models;
 using Interfaces;
+using Newtonsoft.Json;
 
 namespace Services
 {
@@ -24,9 +26,12 @@ namespace Services
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public Task<bool> ChangeOwnerShip(bool oij)
+        public async Task<bool> ChangeOwnerShip(OwnershipModel ownershipModel)
         {
-            throw new System.NotImplementedException();
+            var httpOrder = new StringContent(JsonConvert.SerializeObject(ownershipModel));
+            var httpResponse = await Client.PostAsync("/changeOwnership", httpOrder);
+            return httpResponse.IsSuccessStatusCode;
         }
+
     }
 }

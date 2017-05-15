@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
+using Broker.Models;
 
 namespace Interfaces
 {
     public interface IRegistryService
     {
-        Task<bool> ChangeOwnerShip(bool oij);
+        Task<bool> ChangeOwnerShip(OwnershipModel ownershipModel);
     }
 }
