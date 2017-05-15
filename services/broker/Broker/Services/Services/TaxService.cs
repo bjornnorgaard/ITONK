@@ -26,7 +26,7 @@ namespace Services
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<bool> InformTaxGuy(TaxNotifyObject taxNotifyObject)
+        public async Task<bool> InformTaxTobin(TaxNotifyObject taxNotifyObject)
         {
             var httpOrder = new StringContent(JsonConvert.SerializeObject(taxNotifyObject));
             var httpResponse = await Client.PostAsync("/post", httpOrder);
