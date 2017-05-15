@@ -3,6 +3,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Interfaces;
+using Models;
+using Newtonsoft.Json;
 
 namespace Services
 {
@@ -24,9 +26,11 @@ namespace Services
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public Task<bool> InformTaxGuy(int d)
+        public async Task<bool> InformTaxGuy(SaleInfo saleInfo)
         {
-            throw new System.NotImplementedException();
+            var httpOrder = new StringContent(JsonConvert.SerializeObject(saleInfo));
+            var httpResponse = await Client.PostAsync("/post", httpOrder);
+            return httpResponse.IsSuccessStatusCode;
         }
     }
 }
