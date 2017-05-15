@@ -1,4 +1,4 @@
-﻿namespace Broker.Models
+﻿namespace Models
 {
     public class OwnershipModel
     {
