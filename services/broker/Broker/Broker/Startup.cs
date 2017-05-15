@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Services;
+using Services.Services;
 using BrokerContext = Broker.Models.BrokerContext;
 
 namespace Broker

@@ -6,7 +6,7 @@ using Interfaces;
 using Models;
 using Newtonsoft.Json;
 
-namespace Services
+namespace Services.Services
 {
     public class RegistryService : IRegistryService
     {
@@ -33,9 +33,22 @@ namespace Services
             return httpResponse.IsSuccessStatusCode;
         }
 
-        public Task<bool> IsValidOwnershipAsync(SellOrder order)
+        public async Task<bool> IsValidOwnershipAsync(SellOrder order)
         {
-            throw new NotImplementedException();
+            var request = await Client.GetAsync($"Registry/CheckOwnership?" +
+                                                $"tickerSymbol={order.TickerSymbol}&" +
+                                                $"sellerId={order.SellerId}&" +
+                                                $"quantity={order.Quantity}");
+
+            var content = await request.Content.ReadAsStringAsync();
+            var response = JsonConvert.DeserializeObject<RegistryResponseDto>(content);
+
+            if (response.Owner.ToLower().Contains("t"))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
