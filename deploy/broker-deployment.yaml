@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: broker
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        name: broker
+    spec:
+      containers:
+      - name: broker
+        image: itonk/broker:v1
+        ports:
+        - containerPort: 80
+

@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: taxtobin
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        name: taxtobin
+    spec:
+      containers:
+      - name: taxtobin
+        image: itonk/taxtobin:v1
+        ports:
+        - containerPort: 80
+

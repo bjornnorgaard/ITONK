@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: requester
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        name: requester
+    spec:
+      containers:
+      - name: requester
+        image: itonk/requester:v1
+        ports:
+        - containerPort: 80
+
