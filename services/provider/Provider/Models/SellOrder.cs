@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    public class Order
+    public class SellOrder
     {
         public int SellerId { get; set; }
         public int Price { get; set; }

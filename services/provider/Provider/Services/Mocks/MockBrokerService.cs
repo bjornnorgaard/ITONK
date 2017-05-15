@@ -8,7 +8,7 @@ namespace Services.Mocks
     {
         public MockBrokerService(string value) { }
 
-        public Task<bool> CreateSellOrderAsync(Order order)
+        public Task<bool> CreateSellOrderAsync(SellOrder sellOrder)
         {
             return Task.FromResult(true);
         }
