@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using Services;
 
 namespace Broker.Controllers
 {
@@ -25,9 +26,9 @@ namespace Broker.Controllers
         }
 
         [HttpPost]
-        public Task<IActionResult> Sell([FromBody]SellOrder value)
+        public Task<string> Sell([FromBody]SellOrder value)
         {
-            throw new NotImplementedException();
+            throw  new NotImplementedException();
         }
     }
 }
