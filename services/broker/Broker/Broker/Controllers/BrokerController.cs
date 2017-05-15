@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Broker.Models;
 using Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace Broker.Controllers
