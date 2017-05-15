@@ -32,7 +32,7 @@ namespace Broker
 
             services.AddTransient<IRegistryService, RegistryService>(_ => new RegistryService(Configuration.GetSection("RegistryApiAddress").Value));
             services.AddTransient<ITaxService, TaxService>(_ => new TaxService(Configuration.GetSection("TaxApiAddress").Value));
-            services.AddDbContext<BrokerContext>(options => options.UseSqlServer(System.Configuration.Configuration.GetConnectionString("BrokerConnectionString")));
+            services.AddDbContext<BrokerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BrokerConnectionString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
