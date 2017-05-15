@@ -27,7 +27,7 @@ namespace Services.Services
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<bool> ChangeOwnership(ChangeOwnershipObject changeOwnershipObject)
+        public async Task<bool> ChangeOwnershipAsync(ChangeOwnershipObject changeOwnershipObject)
         {
             var httpOrder = new StringContent(JsonConvert.SerializeObject(changeOwnershipObject));
             var httpResponse = await Client.PostAsync("/changeOwnership", httpOrder);
