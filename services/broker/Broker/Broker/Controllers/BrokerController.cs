@@ -50,7 +50,7 @@ namespace Broker.Controllers
                 Response.StatusCode = 200;
                 return Json(new { status = "Could not change ownership." });
             }
-            if (await _taxService.InformTaxGuy(9) == false)
+            if (await _taxService.InformTaxGuy(new SaleInfo()) == false)
             {
                 Response.StatusCode = 200;
                 return Json(new { status = "Tax was not applied." });
