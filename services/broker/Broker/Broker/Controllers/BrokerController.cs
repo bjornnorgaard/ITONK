@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Broker.Models;
 using Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace Broker.Controllers
@@ -31,36 +30,36 @@ namespace Broker.Controllers
         [HttpPost]
         public async Task<IActionResult> Sell([FromBody]SellOrder value)
         {
-            // Validate model
             if (await _registryService.IsValidOwnershipAsync(value) == false)
             {
                 Response.StatusCode = 200;
                 return Json(new { status = "Shit aint valid" });
             }
 
-            // Save buyOrder to DB
             await _context.SellOrders.AddAsync(value);
 
-            // Find match
-            var isMatchFound = FindMatchAsync(value);
+            var isMatchFound = await FindMatchAsync(value);
 
-            if (await isMatchFound == false)
+            if (isMatchFound == false)
             {
                 Response.StatusCode = 200;
-                return Json(new {status = "No match found. Will be sold later."});
+                return Json(new { status = "No match found. Will be sold later." });
             }
-            if (await isMatchFound)
+            if (await _registryService.ChangeOwnership(new OwnershipModel()) == false)
             {
-                // change ownership
-
-                // inform tax
-
                 Response.StatusCode = 200;
-                return Json(new { status = "Match found. Was sold." });
+                return Json(new { status = "Could not change ownership." });
             }
+            if (await _taxService.InformTaxGuy(9) == false)
+            {
+                Response.StatusCode = 200;
+                return Json(new { status = "Tax was not applied." });
+            }
+
+            // Update broker db.
 
             Response.StatusCode = 200;
-            return Json(new { status = "This should not have happened." });
+            return Json(new { status = "Match found. Was sold." });
         }
 
         private Task<bool> FindMatchAsync(SellOrder sellOrder)

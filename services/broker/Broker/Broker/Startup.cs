@@ -30,7 +30,6 @@ namespace Broker
             // Add framework services.
             services.AddMvc();
 
-            services.AddTransient<IBrokerDbWrapper, BrokerDbWrapper>(_ => new BrokerDbWrapper());
             services.AddTransient<IRegistryService, RegistryService>(_ => new RegistryService(Configuration.GetSection("RegistryApiAddress").Value));
             services.AddTransient<ITaxService, TaxService>(_ => new TaxService(Configuration.GetSection("TaxApiAddress").Value));
             services.AddDbContext<BrokerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BrokerConnectionString")));

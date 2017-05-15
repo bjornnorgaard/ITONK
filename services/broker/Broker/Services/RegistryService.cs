@@ -26,12 +26,16 @@ namespace Services
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<bool> ChangeOwnerShip(OwnershipModel ownershipModel)
+        public async Task<bool> ChangeOwnership(OwnershipModel ownershipModel)
         {
             var httpOrder = new StringContent(JsonConvert.SerializeObject(ownershipModel));
             var httpResponse = await Client.PostAsync("/changeOwnership", httpOrder);
             return httpResponse.IsSuccessStatusCode;
         }
 
+        public Task<bool> IsValidOwnershipAsync(SellOrder order)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
