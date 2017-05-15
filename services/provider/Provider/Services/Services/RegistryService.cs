@@ -27,7 +27,7 @@ namespace Services.Services
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<bool> IsValidOwnershipAsync(Order order)
+        public async Task<bool> IsValidOwnershipAsync(SellOrder order)
         {
             var request = await Client.GetAsync($"Registry/CheckOwnership?" +
                                                 $"tickerSymbol={order.TickerSymbol}&" +

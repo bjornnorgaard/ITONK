@@ -26,7 +26,7 @@ namespace Services.Services
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<bool> CreateSellOrderAsync(Order order)
+        public async Task<bool> CreateSellOrderAsync(SellOrder order)
         {
             var stringObject = JsonConvert.SerializeObject(order);
             var stringContent = new StringContent(stringObject);

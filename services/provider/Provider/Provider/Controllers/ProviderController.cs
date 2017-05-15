@@ -18,7 +18,7 @@ namespace Provider.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Sell([FromBody]Order order)
+        public async Task<IActionResult> Sell([FromBody]SellOrder order)
         {
             if (await _registryService.IsValidOwnershipAsync(order) == false)
             {
