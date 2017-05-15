@@ -28,7 +28,7 @@ namespace Broker
             // Add framework services.
             services.AddMvc();
 
-            services.AddDbContext<BrokerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BrokerConnectionString")));
+            services.AddDbContext<BrokerContext>(options => options.UseSqlServer(System.Configuration.Configuration.GetConnectionString("BrokerConnectionString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
