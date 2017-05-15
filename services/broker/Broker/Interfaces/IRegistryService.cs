@@ -5,7 +5,7 @@ namespace Interfaces
 {
     public interface IRegistryService
     {
-        Task<bool> ChangeOwnership(OwnershipModel ownershipModel);
+        Task<bool> ChangeOwnership(ChangeOwnershipObject changeOwnershipObject);
         Task<bool> IsValidOwnershipAsync(SellOrder order);
     }
 }

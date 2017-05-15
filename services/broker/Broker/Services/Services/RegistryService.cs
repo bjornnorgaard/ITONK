@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Interfaces;
 using Models;
 using Newtonsoft.Json;
+using Services.DTO;
 
 namespace Services.Services
 {
@@ -26,9 +27,9 @@ namespace Services.Services
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<bool> ChangeOwnership(OwnershipModel ownershipModel)
+        public async Task<bool> ChangeOwnership(ChangeOwnershipObject changeOwnershipObject)
         {
-            var httpOrder = new StringContent(JsonConvert.SerializeObject(ownershipModel));
+            var httpOrder = new StringContent(JsonConvert.SerializeObject(changeOwnershipObject));
             var httpResponse = await Client.PostAsync("/changeOwnership", httpOrder);
             return httpResponse.IsSuccessStatusCode;
         }
