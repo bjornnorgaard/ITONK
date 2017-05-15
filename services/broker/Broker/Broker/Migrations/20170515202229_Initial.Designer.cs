@@ -1,14 +1,14 @@
 ﻿using System;
-using Broker.DbModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Broker.DbModels;
 
 namespace Broker.Migrations
 {
     [DbContext(typeof(BrokerContext))]
-    [Migration("20170508142059_Initial")]
+    [Migration("20170515202229_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,26 +17,14 @@ namespace Broker.Migrations
                 .HasAnnotation("ProductVersion", "1.1.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Broker.Models.Transaction", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("BuyOrderId");
-
-                    b.Property<int>("SellOrderId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Transactions");
-                });
-
-            modelBuilder.Entity("Models.BuyRecord", b =>
+            modelBuilder.Entity("Broker.DbModels.BuyRecord", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("BuyerId");
+
+                    b.Property<bool>("IsBought");
 
                     b.Property<int>("MaxPrice");
 
@@ -49,10 +37,12 @@ namespace Broker.Migrations
                     b.ToTable("BuyRecords");
                 });
 
-            modelBuilder.Entity("Models.SellRecord", b =>
+            modelBuilder.Entity("Broker.DbModels.SellRecord", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("IsSold");
 
                     b.Property<int>("Price");
 
@@ -65,6 +55,20 @@ namespace Broker.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SellRecords");
+                });
+
+            modelBuilder.Entity("Broker.DbModels.Transaction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BuyRecordId");
+
+                    b.Property<int>("SellRecordId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Transactions");
                 });
         }
     }

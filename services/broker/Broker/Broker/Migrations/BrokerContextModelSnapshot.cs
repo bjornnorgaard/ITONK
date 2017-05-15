@@ -61,9 +61,9 @@ namespace Broker.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("BuyOrderId");
+                    b.Property<int>("BuyRecordId");
 
-                    b.Property<int>("SellOrderId");
+                    b.Property<int>("SellRecordId");
 
                     b.HasKey("Id");
 
