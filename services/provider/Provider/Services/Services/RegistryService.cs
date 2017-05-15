@@ -7,7 +7,7 @@ using Models;
 using Newtonsoft.Json;
 using Services.Dto;
 
-namespace Services
+namespace Services.Services
 {
     public class RegistryService : IRegistryService
     {

@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Interfaces;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Services;
 using BrokerContext = Broker.Models.BrokerContext;
 
 namespace Broker
@@ -28,6 +30,8 @@ namespace Broker
             // Add framework services.
             services.AddMvc();
 
+            services.AddTransient<IRegistryService, RegistryService>(_ => new RegistryService(Configuration.GetSection("RegistryApiAddress").Value));
+            services.AddTransient<ITaxService, TaxService>(_ => new TaxService(Configuration.GetSection("TaxApiAddress").Value));
             services.AddDbContext<BrokerContext>(options => options.UseSqlServer(System.Configuration.Configuration.GetConnectionString("BrokerConnectionString")));
         }
 
