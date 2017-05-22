@@ -1,7 +1,7 @@
 FROM microsoft/dotnet:1.1-sdk
 
 WORKDIR /app
-COPY . /app
+COPY ./Provider /app
 
 ENV ASPNETCORE_URLS http://+:80
 EXPOSE 80
