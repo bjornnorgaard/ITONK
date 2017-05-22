@@ -8,14 +8,13 @@ using Broker.DbModels;
 namespace Broker.Migrations
 {
     [DbContext(typeof(BrokerContext))]
-    [Migration("20170515202229_Initial")]
+    [Migration("20170522142620_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.1.1")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "1.1.1");
 
             modelBuilder.Entity("Broker.DbModels.BuyRecord", b =>
                 {

@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Broker.Migrations
 {
@@ -12,7 +13,7 @@ namespace Broker.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGeneratedOnAdd", true),
                     BuyerId = table.Column<int>(nullable: false),
                     IsBought = table.Column<bool>(nullable: false),
                     MaxPrice = table.Column<int>(nullable: false),
@@ -29,7 +30,7 @@ namespace Broker.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGeneratedOnAdd", true),
                     IsSold = table.Column<bool>(nullable: false),
                     Price = table.Column<int>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
@@ -46,7 +47,7 @@ namespace Broker.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGeneratedOnAdd", true),
                     BuyRecordId = table.Column<int>(nullable: false),
                     SellRecordId = table.Column<int>(nullable: false)
                 },

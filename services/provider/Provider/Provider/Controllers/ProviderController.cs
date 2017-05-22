@@ -5,7 +5,7 @@ using Models;
 
 namespace Provider.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("[action]")]
     public class ProviderController : Controller
     {
         private readonly IRegistryService _registryService;

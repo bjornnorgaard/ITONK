@@ -17,7 +17,7 @@ namespace Registry.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(Startup.Configuration.GetConnectionString("ShareDatabase"));
+                optionsBuilder.UseMySql(Startup.Configuration.GetConnectionString("ShareDatabase"));
             }
         }
 

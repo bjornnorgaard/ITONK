@@ -5,7 +5,7 @@ using Registry.Models.ViewModel;
 
 namespace Registry.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("[action]")]
     public class RegistryController : Controller
     {
         private readonly ShareContext _context;

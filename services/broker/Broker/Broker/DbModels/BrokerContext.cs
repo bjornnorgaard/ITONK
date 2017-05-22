@@ -13,7 +13,7 @@ namespace Broker.DbModels
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(Startup.Configuration.GetConnectionString("BrokerConnectionString"));
+                optionsBuilder.UseMySql(Startup.Configuration.GetConnectionString("BrokerConnectionString"));
             }
         }
 
