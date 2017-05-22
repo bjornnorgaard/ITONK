@@ -5,6 +5,6 @@ namespace Interfaces
 {
     public interface IRegistryService
     {
-        Task<bool> IsValidOwnershipAsync(Order order);
+        Task<bool> IsValidOwnershipAsync(SellOrder sellOrder);
     }
 }

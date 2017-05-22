@@ -1,14 +1,14 @@
 ﻿using Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Services;
 using Services.Mocks;
-using Services.Services;
+using BrokerContext = Broker.DbModels.BrokerContext;
 
-namespace Provider
+namespace Broker
 {
     public class Startup
     {
@@ -22,7 +22,7 @@ namespace Provider
             Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
+        public static IConfigurationRoot Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -30,8 +30,9 @@ namespace Provider
             // Add framework services.
             services.AddMvc();
 
-            services.AddTransient<IBrokerService, MockBrokerService>(_ => new MockBrokerService(Configuration.GetSection("BrokerApiAddress").Value));
-            services.AddTransient<IRegistryService, RegistryService>(_ => new RegistryService(Configuration.GetSection("RegistryApiAddress").Value));
+            services.AddTransient<IRegistryService, MockRegistryService>(_ => new MockRegistryService(Configuration.GetSection("RegistryApiAddress").Value));
+            services.AddTransient<ITaxService, MockTaxService>(_ => new MockTaxService(Configuration.GetSection("TaxApiAddress").Value));
+            services.AddDbContext<BrokerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BrokerConnectionString")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
