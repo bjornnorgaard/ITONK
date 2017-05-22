@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: proxy
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        name: proxy
+    spec:
+      containers:
+      - name: proxy
+        image: itonk/proxy:v1
+        ports:
+        - containerPort: 80
+

@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: provider
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        name: provider
+    spec:
+      containers:
+      - name: provider
+        image: itonk/provider:v1
+        ports:
+        - containerPort: 80
