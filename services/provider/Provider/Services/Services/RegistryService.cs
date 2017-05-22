@@ -27,12 +27,12 @@ namespace Services.Services
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<bool> IsValidOwnershipAsync(Order order)
+        public async Task<bool> IsValidOwnershipAsync(SellOrder sellOrder)
         {
             var request = await Client.GetAsync($"Registry/CheckOwnership?" +
-                                                $"tickerSymbol={order.TickerSymbol}&" +
-                                                $"sellerId={order.SellerId}&" +
-                                                $"quantity={order.Quantity}");
+                                                $"tickerSymbol={sellOrder.TickerSymbol}&" +
+                                                $"sellerId={sellOrder.SellerId}&" +
+                                                $"quantity={sellOrder.Quantity}");
 
             var content = await request.Content.ReadAsStringAsync();
             var response = JsonConvert.DeserializeObject<RegistryResponseDto>(content);
