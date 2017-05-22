@@ -1,12 +1,13 @@
-﻿using System;
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Interfaces;
 using Models;
 using Newtonsoft.Json;
+using Services.DTO;
 
-namespace Services
+namespace Services.Services
 {
     public class RegistryService : IRegistryService
     {
@@ -26,16 +27,29 @@ namespace Services
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<bool> ChangeOwnership(OwnershipModel ownershipModel)
+        public async Task<bool> ChangeOwnershipAsync(ChangeOwnershipObject changeOwnershipObject)
         {
-            var httpOrder = new StringContent(JsonConvert.SerializeObject(ownershipModel));
+            var httpOrder = new StringContent(JsonConvert.SerializeObject(changeOwnershipObject));
             var httpResponse = await Client.PostAsync("/changeOwnership", httpOrder);
             return httpResponse.IsSuccessStatusCode;
         }
 
-        public Task<bool> IsValidOwnershipAsync(SellOrder order)
+        public async Task<bool> IsValidOwnershipAsync(SellOrder order)
         {
-            throw new NotImplementedException();
+            var request = await Client.GetAsync($"Registry/CheckOwnership?" +
+                                                $"tickerSymbol={order.TickerSymbol}&" +
+                                                $"sellerId={order.SellerId}&" +
+                                                $"quantity={order.Quantity}");
+
+            var content = await request.Content.ReadAsStringAsync();
+            var response = JsonConvert.DeserializeObject<RegistryResponseDto>(content);
+
+            if (response.Owner.ToLower().Contains("t"))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

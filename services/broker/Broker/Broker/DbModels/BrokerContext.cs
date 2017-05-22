@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Models;
 
-namespace Broker.Models
+namespace Broker.DbModels
 {
     public class BrokerContext : DbContext
     {
@@ -19,7 +18,7 @@ namespace Broker.Models
         }
 
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<BuyOrder> BuyOrders { get; set; }
-        public DbSet<SellOrder> SellOrders { get; set; }
+        public DbSet<BuyRecord> BuyRecords { get; set; }
+        public DbSet<SellRecord> SellRecords { get; set; }
     }
 }

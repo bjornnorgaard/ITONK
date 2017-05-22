@@ -5,6 +5,6 @@ namespace Interfaces
 {
     public interface ITaxService
     {
-        Task<bool> InformTaxGuy(SaleInfo saleInfo);
+        Task<bool> InformTaxTobin(TaxNotifyObject taxNotifyObject);
     }
 }

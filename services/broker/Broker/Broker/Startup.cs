@@ -5,8 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Services;
-using BrokerContext = Broker.Models.BrokerContext;
+using Services.Mocks;
+using BrokerContext = Broker.DbModels.BrokerContext;
 
 namespace Broker
 {
@@ -30,8 +30,8 @@ namespace Broker
             // Add framework services.
             services.AddMvc();
 
-            services.AddTransient<IRegistryService, RegistryService>(_ => new RegistryService(Configuration.GetSection("RegistryApiAddress").Value));
-            services.AddTransient<ITaxService, TaxService>(_ => new TaxService(Configuration.GetSection("TaxApiAddress").Value));
+            services.AddTransient<IRegistryService, MockRegistryService>(_ => new MockRegistryService(Configuration.GetSection("RegistryApiAddress").Value));
+            services.AddTransient<ITaxService, MockTaxService>(_ => new MockTaxService(Configuration.GetSection("TaxApiAddress").Value));
             services.AddDbContext<BrokerContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BrokerConnectionString")));
         }
 

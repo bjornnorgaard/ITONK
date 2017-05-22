@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    public class OwnershipModel
+    public class ChangeOwnershipObject
     {
         public int SellerId { get; set; }
         public int BuyerId { get; set; }
