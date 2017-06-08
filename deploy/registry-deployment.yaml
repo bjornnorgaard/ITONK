@@ -15,5 +15,11 @@ spec:
         ports:
         - containerPort: 80
         env:
-          - name: "ConnectionStrings:ShareDatabase"
-            value: "Server=itonk-db;User Id=root;Password=1234;Database=registry"
+        - name: dbhost
+          value: "35.187.53.157"
+        - name: dbuser
+          value: "doe"
+        - name: dbpassword
+          value: "1234"
+        - name: dbdatabase
+          value: "registry"

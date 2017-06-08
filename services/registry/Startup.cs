@@ -29,7 +29,7 @@ namespace Registry
         {
             // Add framework services.
             services.AddMvc();
-            services.AddDbContext<ShareContext>(opt => opt.UseMySql(Configuration.GetConnectionString("ShareDatabase")));
+            services.AddDbContext<ShareContext>(opt => opt.UseMySql(GetConnectionString()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +41,14 @@ namespace Registry
             app.UseMvc();
 
             DbInitializer.Initialize(context);
+        }
+        
+        public static string GetConnectionString()
+        {
+            return $"Server={Configuration.GetSection("dbhost")};"
+                   + $"User Id={Configuration.GetSection("dbuser")};"
+                   + $"Password={Configuration.GetSection("dbpassword")};"
+                   + $"Database={Configuration.GetSection("dbdatabase")}";
         }
     }
 }

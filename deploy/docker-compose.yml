@@ -14,11 +14,6 @@ services:
     ports:
       - "80"
     environment:
-      MYSQL_HOST: broker-db
-      MYSQL_PORT: 6379
-      MYSQL_DB: brokerdb
-      MYSQL_USER: broker
-      MYSQL_PASSWORD: 1234
       "ConnectionStrings:BrokerConnectionString": "Server=itonk-db;User Id=root;Password=1234;Database=broker"
       "TaxApiAddress": "http://taxtobin/"
       "RegistryApiAddress": "http://registry/"

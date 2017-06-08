@@ -34,7 +34,7 @@ namespace Broker
 
             services.AddTransient<IRegistryService, RegistryService>(_ => new RegistryService(Configuration.GetSection("RegistryApiAddress").Value));
             services.AddTransient<ITaxService, TaxService>(_ => new TaxService(Configuration.GetSection("TaxApiAddress").Value));
-            services.AddDbContext<BrokerContext>(options => options.UseMySql(Configuration.GetConnectionString("BrokerConnectionString")));
+            services.AddDbContext<BrokerContext>(options => options.UseMySql(GetConnectionString()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +44,14 @@ namespace Broker
             loggerFactory.AddDebug();
 
             app.UseMvc();
+        }
+
+        public static string GetConnectionString()
+        {
+            return $"Server={Configuration.GetSection("dbhost")};"
+            + $"User Id={Configuration.GetSection("dbuser")};"
+            + $"Password={Configuration.GetSection("dbpassword")};"
+            + $"Database={Configuration.GetSection("dbdatabase")}";
         }
     }
 }
