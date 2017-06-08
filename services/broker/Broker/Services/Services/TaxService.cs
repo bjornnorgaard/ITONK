@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using Interfaces;
 using Models;
@@ -28,8 +29,8 @@ namespace Services
 
         public async Task<bool> InformTaxTobin(TaxNotifyObject taxNotifyObject)
         {
-            var httpOrder = new StringContent(JsonConvert.SerializeObject(taxNotifyObject));
-            var httpResponse = await Client.PostAsync("/post", httpOrder);
+            var httpOrder = new StringContent(JsonConvert.SerializeObject(taxNotifyObject), Encoding.UTF8, "application/json");
+            var httpResponse = await Client.PostAsync("tax", httpOrder);
             return httpResponse.IsSuccessStatusCode;
         }
     }
