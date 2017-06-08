@@ -21,6 +21,7 @@ services:
       MYSQL_PASSWORD: 1234
       "ConnectionStrings:BrokerConnectionString": "Server=itonk-db;User Id=root;Password=1234;Database=broker"
       "TaxApiAddress": "http://taxtobin/"
+      "RegistryApiAddress": "http://registry/"
 
   itonk-db:
     container_name: itonk-db

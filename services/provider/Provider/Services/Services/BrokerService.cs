@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using Interfaces;
 using Models;
@@ -29,9 +30,9 @@ namespace Services.Services
         public async Task<bool> CreateSellOrderAsync(SellOrder sellOrder)
         {
             var stringObject = JsonConvert.SerializeObject(sellOrder);
-            var stringContent = new StringContent(stringObject);
+            var stringContent = new StringContent(stringObject, Encoding.UTF8, "application/json");
 
-            var response = await Client.PostAsync("/sell", stringContent);
+            var response = await Client.PostAsync("sell", stringContent);
             return response.IsSuccessStatusCode;
         }
     }

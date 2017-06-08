@@ -22,17 +22,26 @@ namespace Services.Services
                                             $"The key should be called something like {nameof(registryApiAddress)}.");
             }
 
-            Client = new HttpClient { BaseAddress = new Uri(registryApiAddress) };
+            Client = new HttpClient {BaseAddress = new Uri(registryApiAddress)};
             Client.DefaultRequestHeaders.Accept.Clear();
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public async Task<bool> IsValidOwnershipAsync(SellOrder sellOrder)
         {
-            var request = await Client.GetAsync($"Registry/CheckOwnership?" +
+            HttpResponseMessage request = null;
+            try
+            {
+                request = await Client.GetAsync("checkOwnership?" +
                                                 $"tickerSymbol={sellOrder.TickerSymbol}&" +
                                                 $"sellerId={sellOrder.SellerId}&" +
                                                 $"quantity={sellOrder.Quantity}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("FFS");
+                return false;
+            }
 
             var content = await request.Content.ReadAsStringAsync();
             var response = JsonConvert.DeserializeObject<RegistryResponseDto>(content);

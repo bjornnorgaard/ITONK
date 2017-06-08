@@ -22,7 +22,7 @@ namespace Broker.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Buy([FromBody]BuyOrder buyOrder)
+        public async Task<IActionResult> Buy([FromBody] BuyOrder buyOrder)
         {
             var buyRecord = SaveOrderToDatabase(buyOrder);
             var sellRecord = FindMatchingOrder(buyRecord);
@@ -30,7 +30,7 @@ namespace Broker.Controllers
             if (sellRecord == null)
             {
                 Response.StatusCode = 202;
-                return Json(new { status = "No match found. Will buy later." });
+                return Json(new {status = "No match found. Will buy later."});
             }
 
             var changeOwnershipObject = new ChangeOwnershipObject
@@ -43,7 +43,7 @@ namespace Broker.Controllers
             if (await _registryService.ChangeOwnershipAsync(changeOwnershipObject) == false)
             {
                 Response.StatusCode = 503;
-                return Json(new { status = "Could not change ownership." });
+                return Json(new {status = "Could not change ownership."});
             }
 
             UpdateRecordsOnMatch(sellRecord, buyRecord);
@@ -56,20 +56,20 @@ namespace Broker.Controllers
             if (await _taxService.InformTaxTobin(taxNotifyObject) == false)
             {
                 Response.StatusCode = 503;
-                return Json(new { status = "Tax was not applied." });
+                return Json(new {status = "Tax was not applied."});
             }
 
             Response.StatusCode = 201;
-            return Json(new { status = "Match found. Was bought." });
+            return Json(new {status = "Match found. Was bought."});
         }
 
         [HttpPost]
-        public async Task<IActionResult> Sell([FromBody]SellOrder sellOrder)
+        public async Task<IActionResult> Sell([FromBody] SellOrder sellOrder)
         {
             if (await _registryService.IsValidOwnershipAsync(sellOrder) == false)
             {
                 Response.StatusCode = 204;
-                return Json(new { status = "Shit ain't valid" });
+                return Json(new {status = "Shit ain't valid"});
             }
 
             var sellRecord = SaveOrderToDatabase(sellOrder);
@@ -78,7 +78,7 @@ namespace Broker.Controllers
             if (buyRecord == null)
             {
                 Response.StatusCode = 202;
-                return Json(new { status = "No match found. Will be sold later." });
+                return Json(new {status = "No match found. Will be sold later."});
             }
 
             var changeOwnershipObject = new ChangeOwnershipObject
@@ -91,7 +91,7 @@ namespace Broker.Controllers
             if (await _registryService.ChangeOwnershipAsync(changeOwnershipObject) == false)
             {
                 Response.StatusCode = 503;
-                return Json(new { status = "Could not change ownership." });
+                return Json(new {status = "Could not change ownership."});
             }
 
             UpdateRecordsOnMatch(sellRecord, buyRecord);
@@ -104,11 +104,11 @@ namespace Broker.Controllers
             if (await _taxService.InformTaxTobin(taxNotifyObject) == false)
             {
                 Response.StatusCode = 503;
-                return Json(new { status = "Tax was not applied." });
+                return Json(new {status = "Tax was not applied."});
             }
 
             Response.StatusCode = 201;
-            return Json(new { status = "Match found. Was sold." });
+            return Json(new {status = "Match found. Was sold."});
         }
 
         private void UpdateRecordsOnMatch(SellRecord sellRecord, BuyRecord buyRecord)
@@ -134,15 +134,18 @@ namespace Broker.Controllers
             var findMatchingBuyOrder = _context.BuyRecords
                 .Where(b => b.TickerSymbol == sellRecord.TickerSymbol)
                 .Where(b => b.Quantity >= sellRecord.Quantity)
+                .Where(b => b.IsBought == false)
                 .First(b => b.MaxPrice >= sellRecord.Price);
 
             return findMatchingBuyOrder;
         }
+
         private SellRecord FindMatchingOrder(BuyRecord buyRecord)
         {
             var findMatchingBuyOrder = _context.SellRecords
                 .Where(s => s.TickerSymbol == buyRecord.TickerSymbol)
                 .Where(s => s.Quantity >= buyRecord.Quantity)
+                .Where(s => s.IsSold == false)
                 .FirstOrDefault(s => s.Price <= buyRecord.MaxPrice);
 
             return findMatchingBuyOrder;
@@ -163,11 +166,12 @@ namespace Broker.Controllers
 
             return sellRecord;
         }
+
         private BuyRecord SaveOrderToDatabase(BuyOrder order)
         {
             var buyRecord = new BuyRecord()
             {
-                BuyerId= order.BuyerId,
+                BuyerId = order.BuyerId,
                 MaxPrice = order.MaxPrice,
                 Quantity = order.Quantity,
                 TickerSymbol = order.TickerSymbol
