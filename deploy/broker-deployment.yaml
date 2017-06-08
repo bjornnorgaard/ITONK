@@ -11,7 +11,23 @@ spec:
     spec:
       containers:
       - name: broker
-        image: itonk/broker:v1
+        image: eu.gcr.io/itonk-168412/broker
         ports:
         - containerPort: 80
-
+        env:
+        - name: MYSQL_HOST
+          value: "broker-db"
+        - name: MYSQL_PORT
+          value: "6379"
+        - name: MYSQL_DB
+          value: "brokerdb"
+        - name: MYSQL_USER
+          value: "broker"
+        - name: MYSQL_PASSWORD
+          value: "1234"
+        - name: ConnectionStrings:BrokerConnectionString
+          value: "Server=itonk-db;User Id=root;Password=1234;Database=broker"
+        - name: TaxApiAddress
+          value: "http://taxtobin/"
+        - name: RegistryApiAddress
+          value: "http://registry/"

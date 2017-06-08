@@ -11,7 +11,9 @@ spec:
     spec:
       containers:
       - name: registry
-        image: itonk/registry:v1
+        image: eu.gcr.io/itonk-168412/registry
         ports:
         - containerPort: 80
-
+        env:
+          - name: "ConnectionStrings:ShareDatabase"
+            value: "Server=itonk-db;User Id=root;Password=1234;Database=registry"

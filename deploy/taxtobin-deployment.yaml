@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: taxtobin
-        image: itonk/taxtobin:v1
+        image: eu.gcr.io/itonk-168412/taxtobin
         ports:
         - containerPort: 80
 

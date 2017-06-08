@@ -11,7 +11,9 @@ spec:
     spec:
       containers:
       - name: requester
-        image: itonk/requester:v1
+        image: eu.gcr.io/itonk-168412/requester
         ports:
         - containerPort: 80
-
+        env:
+          - name: BrokerApiAddress
+            value: "http://broker/"
