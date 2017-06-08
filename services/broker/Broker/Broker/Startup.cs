@@ -51,7 +51,7 @@ namespace Broker
             return $"Server={Configuration.GetSection("dbhost").Value};"
             + $"User Id={Configuration.GetSection("dbuser").Value};"
             + $"Password={Configuration.GetSection("dbpassword").Value};"
-            + $"Database={Configuration.GetSection("dbdatabase").Value}";
+            + $"Database={Configuration.GetSection("dbdatabase").Value};";
         }
     }
 }
