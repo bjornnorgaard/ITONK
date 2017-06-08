@@ -45,10 +45,10 @@ namespace Registry
         
         public static string GetConnectionString()
         {
-            return $"Server={Configuration.GetSection("dbhost")};"
-                   + $"User Id={Configuration.GetSection("dbuser")};"
-                   + $"Password={Configuration.GetSection("dbpassword")};"
-                   + $"Database={Configuration.GetSection("dbdatabase")}";
+            return $"Server={Configuration.GetSection("dbhost").Value};"
+                   + $"User Id={Configuration.GetSection("dbuser").Value};"
+                   + $"Password={Configuration.GetSection("dbpassword").Value};"
+                   + $"Database={Configuration.GetSection("dbdatabase").Value}";
         }
     }
 }
