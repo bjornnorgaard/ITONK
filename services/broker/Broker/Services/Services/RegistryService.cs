@@ -1,6 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using Interfaces;
 using Models;
@@ -29,14 +30,14 @@ namespace Services.Services
 
         public async Task<bool> ChangeOwnershipAsync(ChangeOwnershipObject changeOwnershipObject)
         {
-            var httpOrder = new StringContent(JsonConvert.SerializeObject(changeOwnershipObject));
+            var httpOrder = new StringContent(JsonConvert.SerializeObject(changeOwnershipObject), Encoding.UTF8, "application/json");
             var httpResponse = await Client.PostAsync("/changeOwnership", httpOrder);
             return httpResponse.IsSuccessStatusCode;
         }
 
         public async Task<bool> IsValidOwnershipAsync(SellOrder order)
         {
-            var request = await Client.GetAsync($"Registry/CheckOwnership?" +
+            var request = await Client.GetAsync("checkOwnership?" +
                                                 $"tickerSymbol={order.TickerSymbol}&" +
                                                 $"sellerId={order.SellerId}&" +
                                                 $"quantity={order.Quantity}");

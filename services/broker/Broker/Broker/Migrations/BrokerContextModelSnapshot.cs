@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Broker.DbModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
-using Broker.DbModels;
 
 namespace Broker.Migrations
 {
@@ -13,8 +10,7 @@ namespace Broker.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.1.1")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "1.1.1");
 
             modelBuilder.Entity("Broker.DbModels.BuyRecord", b =>
                 {

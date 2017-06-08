@@ -1,13 +1,11 @@
 version: "2"
 
 services:
-
   proxy:
     container_name: proxy
     build: ../services/proxy
     ports:
       - "8000:80"
-
 
   broker:
     container_name: broker
@@ -21,21 +19,23 @@ services:
       MYSQL_DB: brokerdb
       MYSQL_USER: broker
       MYSQL_PASSWORD: 1234
+      "ConnectionStrings:BrokerConnectionString": "Server=itonk-db;User Id=root;Password=1234;Database=broker"
+      "TaxApiAddress": "http://taxtobin/"
+      "RegistryApiAddress": "http://registry/"
 
-  broker-db:
-    container_name: broker-db
+  itonk-db:
+    container_name: itonk-db
     image: mysql:5.7
     restart: always
     ports:
       - "3306:3306"
     volumes:
-      - "../var/broker-db-mysqldata:/var/lib/mysql"
+      - "itonk-db:/var/lib/mysql"
     environment:
-      MYSQL_DATABASE: brokerdb
+      MYSQL_DATABASE: itonk
       MYSQL_ROOT_PASSWORD: 1234
-      MYSQL_USER: broker
+      MYSQL_USER: itonk
       MYSQL_PASSWORD: 1234
-
 
   provider:
     container_name: provider
@@ -43,6 +43,9 @@ services:
     build: ../services/provider
     ports:
       - "80"
+    environment:
+      "BrokerApiAddress": "http://broker/"
+      "RegistryApiAddress": "http://registry/"
 
   registry:
     container_name: registry
@@ -50,6 +53,8 @@ services:
     build: ../services/registry
     ports:
       - "80"
+    environment:
+      "ConnectionStrings:ShareDatabase": "Server=itonk-db;User Id=root;Password=1234;Database=registry"
 
   requester:
     container_name: requester
@@ -57,6 +62,8 @@ services:
     build: ../services/requester
     ports:
       - "80"
+    environment:
+      "BrokerApiAddress": "http://broker/"
 
   taxtobin:
     container_name: taxtobin
@@ -64,3 +71,6 @@ services:
     build: ../services/taxtobin
     ports:
       - "80"
+
+volumes:
+    itonk-db:

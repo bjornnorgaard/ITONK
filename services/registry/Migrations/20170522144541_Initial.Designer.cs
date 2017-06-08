@@ -8,16 +8,15 @@ using Registry.Models;
 namespace Registry.Migrations
 {
     [DbContext(typeof(ShareContext))]
-    [Migration("20170504070951_initial")]
-    partial class initial
+    [Migration("20170522144541_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.1.1")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "1.1.1");
 
-            modelBuilder.Entity("Registry.Models.Share", b =>
+            modelBuilder.Entity("Registry.Models.ShareModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
