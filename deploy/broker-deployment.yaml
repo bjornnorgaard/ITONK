@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: broker
-        image: eu.gcr.io/itonk-168412/broker
+        image: eu.gcr.io/itonk-168412/broker:v1
         ports:
         - containerPort: 80
         env:
