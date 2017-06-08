@@ -14,4 +14,6 @@ spec:
         image: itonk/registry:v1
         ports:
         - containerPort: 80
-
+        env:
+          - name: "ConnectionStrings:ShareDatabase"
+            value: "Server=itonk-db;User Id=root;Password=1234;Database=registry"

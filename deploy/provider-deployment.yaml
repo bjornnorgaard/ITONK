@@ -14,3 +14,9 @@ spec:
         image: itonk/provider:v1
         ports:
         - containerPort: 80
+        env:
+          - name: BrokerApiAddress
+            value: "http://broker/"
+          - name: "RegistryApiAddress"
+            value: "http://registry/"
+

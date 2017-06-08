@@ -14,4 +14,3 @@ spec:
         image: itonk/proxy:v1
         ports:
         - containerPort: 80
-
