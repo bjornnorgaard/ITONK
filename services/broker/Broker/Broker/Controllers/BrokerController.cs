@@ -7,7 +7,7 @@ using Models;
 
 namespace Broker.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("[action]")]
     public class BrokerController : Controller
     {
         private readonly IRegistryService _registryService;
@@ -143,7 +143,7 @@ namespace Broker.Controllers
             var findMatchingBuyOrder = _context.SellRecords
                 .Where(s => s.TickerSymbol == buyRecord.TickerSymbol)
                 .Where(s => s.Quantity >= buyRecord.Quantity)
-                .First(s => s.Price <= buyRecord.MaxPrice);
+                .FirstOrDefault(s => s.Price <= buyRecord.MaxPrice);
 
             return findMatchingBuyOrder;
         }
