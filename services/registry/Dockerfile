@@ -8,4 +8,4 @@ EXPOSE 80
 
 RUN dotnet restore
 
-ENTRYPOINT ["dotnet", "run"]
+CMD ["./run.sh"]
