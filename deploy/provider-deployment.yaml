@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: provider
-        image: itonk/provider:v1
+        image: eu.gcr.io/itonk-168412/provider
         ports:
         - containerPort: 80
         env:
