@@ -135,7 +135,7 @@ namespace Broker.Controllers
                 .Where(b => b.TickerSymbol == sellRecord.TickerSymbol)
                 .Where(b => b.Quantity >= sellRecord.Quantity)
                 .Where(b => b.IsBought == false)
-                .First(b => b.MaxPrice >= sellRecord.Price);
+                .FirstOrDefault(b => b.MaxPrice >= sellRecord.Price);
 
             return findMatchingBuyOrder;
         }
