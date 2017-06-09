@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: taxtobin
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -14,4 +14,3 @@ spec:
         image: eu.gcr.io/itonk-168412/taxtobin:v1
         ports:
         - containerPort: 80
-
