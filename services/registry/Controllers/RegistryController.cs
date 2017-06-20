@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Registry.Models;
 using Registry.Models.ViewModel;
@@ -21,14 +22,19 @@ namespace Registry.Controllers
             if (string.IsNullOrWhiteSpace(tickerSymbol) || sellerId == 0 || quantity == 0)
             {
                 Response.StatusCode = 400;
-                return Json(new { errorMessage = "Insufficient parameters given" });
+                var insufficientParametersGiven = "Insufficient parameters given";
+                Console.Out.WriteLine(insufficientParametersGiven);
+                return Json(new { errorMessage = insufficientParametersGiven });
             }
 
             var shares = _context.Shares
                 .Where(s => s.Owner == sellerId)
                 .Where(s => s.TickerSymbol == tickerSymbol);
 
-            return Json(shares.Count() >= quantity ? new { Owner = "True" } : new { Owner = "False" });
+
+            var p = shares.Count() >= quantity ? new { Owner = "True" } : new { Owner = "False" };
+            Console.Out.WriteLine(p);
+            return Json(p);
         }
 
         [HttpPost]
@@ -37,13 +43,19 @@ namespace Registry.Controllers
             if (buyModel.BuyerId == 0 || buyModel.Quantity == 0 || buyModel.SellerId == 0 || string.IsNullOrWhiteSpace(buyModel.TickerSymbol))
             {
                 Response.StatusCode = 400;
-                return Json(new { errorMessage = "Insufficient parameters given" });
+                var insufficientParametersGiven = "Insufficient parameters given";
+                Console.Out.WriteLine(insufficientParametersGiven);
+                return Json(new { errorMessage = insufficientParametersGiven });
             }
 
             var shares = _context.Shares.Where(share => share.Owner == buyModel.SellerId && share.TickerSymbol == buyModel.TickerSymbol);
 
             if (shares.Count() < buyModel.Quantity)
-                return Json(new { errorMessage = "Insufficient shares owned" });
+            {
+                var insufficientSharesOwned = "Insufficient shares owned";
+                Console.Out.WriteLine(insufficientSharesOwned);
+                return Json(new { errorMessage = insufficientSharesOwned });
+            }
 
             var sharesToBeSold = shares.Take(buyModel.Quantity);
 
@@ -55,7 +67,9 @@ namespace Registry.Controllers
             _context.Shares.UpdateRange(sharesToBeSold);
             _context.SaveChanges();
 
-            return Json(new { Message = "Shares sold" });
+            var sharesSold = "Shares sold";
+            Console.Out.WriteLine(sharesSold);
+            return Json(new { Message = sharesSold });
         }
     }
 }
