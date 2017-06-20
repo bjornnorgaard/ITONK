@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: requester
-        image: eu.gcr.io/itonk-168412/requester:v1
+        image: eu.gcr.io/itonk-168412/requester:v2
         ports:
         - containerPort: 80
         env:

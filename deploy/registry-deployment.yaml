@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: registry
-        image: eu.gcr.io/itonk-168412/registry:v1
+        image: eu.gcr.io/itonk-168412/registry:v2
         ports:
         - containerPort: 80
         env:
