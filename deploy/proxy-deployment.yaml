@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
       - name: proxy
-        image: eu.gcr.io/itonk-168412/proxy:v2
+        image: eu.gcr.io/itonk-168412/proxy:v1
         ports:
         - containerPort: 80
