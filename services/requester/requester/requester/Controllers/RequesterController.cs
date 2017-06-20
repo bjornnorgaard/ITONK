@@ -13,6 +13,12 @@ namespace requester.Controllers
         [HttpPost]
         public async Task<string> Buy([FromBody] BuyOrder buyOrder)
         {
+            Console.Out.WriteLine("BuyService recieved order:" + 
+                buyOrder.BuyerId + "\n" + 
+                buyOrder.MaxPrice + "\n" + 
+                buyOrder.Quantity + "\n" + 
+                buyOrder.TickerSymbol);
+
             HttpResponseMessage response;
             try
             {
@@ -23,7 +29,14 @@ namespace requester.Controllers
                 return e.Message;
             }
 
-            return response.IsSuccessStatusCode ? Resource.order_submitted_ok : Resource.order_submitted_error;
+            if (response.IsSuccessStatusCode)
+            {
+                Console.Out.WriteLine("BuyService: " + Resource.order_submitted_ok);
+                return Resource.order_submitted_ok;
+            }
+
+            Console.Out.WriteLine("BuyService: " + Resource.order_submitted_error);
+            return Resource.order_submitted_error;
         }
     }
 }
