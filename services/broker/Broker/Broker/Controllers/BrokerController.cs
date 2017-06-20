@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Broker.DbModels;
 using Interfaces;
@@ -24,13 +25,20 @@ namespace Broker.Controllers
         [HttpPost]
         public async Task<IActionResult> Buy([FromBody] BuyOrder buyOrder)
         {
+            Console.Out.WriteLine($"Received buyorder with " +
+                                  $"{nameof(buyOrder.Quantity)}={buyOrder.Quantity}, " +
+                                  $"{nameof(buyOrder.TickerSymbol)}={buyOrder.TickerSymbol}, " +
+                                  $"{nameof(buyOrder.MaxPrice)}={buyOrder.MaxPrice}");
+
             var buyRecord = SaveOrderToDatabase(buyOrder);
             var sellRecord = FindMatchingOrder(buyRecord);
 
             if (sellRecord == null)
             {
                 Response.StatusCode = 202;
-                return Json(new {status = "No match found. Will buy later."});
+                var noMatchFoundWillBuyLater = "No match found. Will buy later.";
+                Console.Out.WriteLine(noMatchFoundWillBuyLater);
+                return Json(new {status = noMatchFoundWillBuyLater});
             }
 
             var changeOwnershipObject = new ChangeOwnershipObject
@@ -43,7 +51,9 @@ namespace Broker.Controllers
             if (await _registryService.ChangeOwnershipAsync(changeOwnershipObject) == false)
             {
                 Response.StatusCode = 503;
-                return Json(new {status = "Could not change ownership."});
+                var couldNotChangeOwnership = "Could not change ownership.";
+                Console.Out.WriteLine(couldNotChangeOwnership);
+                return Json(new {status = couldNotChangeOwnership});
             }
 
             UpdateRecordsOnMatch(sellRecord, buyRecord);
@@ -56,20 +66,31 @@ namespace Broker.Controllers
             if (await _taxService.InformTaxTobin(taxNotifyObject) == false)
             {
                 Response.StatusCode = 503;
-                return Json(new {status = "Tax was not applied."});
+                var taxWasNotApplied = "Tax was not applied.";
+                Console.Out.WriteLine(taxWasNotApplied);
+                return Json(new {status = taxWasNotApplied});
             }
 
             Response.StatusCode = 201;
-            return Json(new {status = "Match found. Was bought."});
+            var matchFoundWasBought = "Match found. Was bought.";
+            Console.Out.WriteLine(matchFoundWasBought);
+            return Json(new {status = matchFoundWasBought});
         }
 
         [HttpPost]
         public async Task<IActionResult> Sell([FromBody] SellOrder sellOrder)
         {
+            Console.Out.WriteLine($"Received buyorder with " +
+                                  $"{nameof(sellOrder.Quantity)}={sellOrder.Quantity}, " +
+                                  $"{nameof(sellOrder.TickerSymbol)}={sellOrder.TickerSymbol}, " +
+                                  $"{nameof(sellOrder.Price)}={sellOrder.Price}");
+
             if (await _registryService.IsValidOwnershipAsync(sellOrder) == false)
             {
                 Response.StatusCode = 204;
-                return Json(new {status = "Shit ain't valid"});
+                var shitAinTValid = "Sellorder not valid";
+                Console.Out.WriteLine(shitAinTValid);
+                return Json(new {status = shitAinTValid});
             }
 
             var sellRecord = SaveOrderToDatabase(sellOrder);
@@ -78,7 +99,9 @@ namespace Broker.Controllers
             if (buyRecord == null)
             {
                 Response.StatusCode = 202;
-                return Json(new {status = "No match found. Will be sold later."});
+                var noMatchFoundWillBeSoldLater = "No match found. Will be sold later.";
+                Console.Out.WriteLine(noMatchFoundWillBeSoldLater);
+                return Json(new {status = noMatchFoundWillBeSoldLater});
             }
 
             var changeOwnershipObject = new ChangeOwnershipObject
@@ -91,7 +114,9 @@ namespace Broker.Controllers
             if (await _registryService.ChangeOwnershipAsync(changeOwnershipObject) == false)
             {
                 Response.StatusCode = 503;
-                return Json(new {status = "Could not change ownership."});
+                var couldNotChangeOwnership = "Could not change ownership.";
+                Console.Out.WriteLine(couldNotChangeOwnership);
+                return Json(new {status = couldNotChangeOwnership});
             }
 
             UpdateRecordsOnMatch(sellRecord, buyRecord);
@@ -104,11 +129,15 @@ namespace Broker.Controllers
             if (await _taxService.InformTaxTobin(taxNotifyObject) == false)
             {
                 Response.StatusCode = 503;
-                return Json(new {status = "Tax was not applied."});
+                var taxWasNotApplied = "Tax was not applied.";
+                Console.Out.WriteLine(taxWasNotApplied);
+                return Json(new {status = taxWasNotApplied});
             }
 
             Response.StatusCode = 201;
-            return Json(new {status = "Match found. Was sold."});
+            var matchFoundWasSold = "Match found. Was sold.";
+            Console.Out.WriteLine(matchFoundWasSold);
+            return Json(new {status = matchFoundWasSold});
         }
 
         private void UpdateRecordsOnMatch(SellRecord sellRecord, BuyRecord buyRecord)
